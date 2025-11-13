@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adrian — CV</title>
+    <title>Adrian Mungroo</title>
     <meta
       name="description"
       content="Curriculum Vitae of Adrian, Mechanical Engineering PhD (Georgia Tech) focused on geostatistics."
     />
-    <meta property="og:title" content="Adrian — CV" />
+    <meta property="og:title" content="Adrian Mungroo" />
     <meta
       property="og:description"
       content="Mechanical Engineering PhD (Georgia Tech). Spatial Analytics & Geostatistics."
@@ -16,8 +16,19 @@
     <meta property="og:type" content="website" />
     <meta name="color-scheme" content="light dark" />
 
+    <!-- Google Fonts - JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- External Stylesheet -->
     <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- JSON-LD for rich snippets (tweak your links) -->
     <script type="application/ld+json">
@@ -42,8 +53,8 @@
           "Python"
         ],
         "sameAs": [
-          "https://github.com/yourhandle",
-          "https://www.linkedin.com/in/yourhandle"
+          "https://github.com/adrianmungroo",
+          "https://www.linkedin.com/in/adrianmungroo"
         ]
       }
     </script>
@@ -55,7 +66,7 @@
       <header>
         <div class="avatar">A</div>
         <div>
-          <h1>Adrian</h1>
+          <h1>Adrian Mungroo</h1>
           <div class="subtitle">
             Mechanical Engineering PhD @ Georgia Tech • Spatial Analytics &
             Geostatistics
@@ -114,7 +125,6 @@
                     d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
                   /></svg></a
             ></span>
-            <span class="chip"><a href="./Adrian_CV.pdf">Download PDF</a></span>
           </div>
           <nav>
             <a href="#about">About</a>
@@ -130,7 +140,7 @@
       <!-- Main Content Sections -->
       <section id="about">
         <h2 class="section-title">About</h2>
-        <p style="font-size: 17px; line-height: 1.7; margin-bottom: 20px">
+        <p class="intro-text">
           Hey there! I'm Adrian, a Mechanical Engineering PhD focusing on
           spatial analytics and geostatistics for energy systems. I build
           spatial models to understand and improve the equity, resilience, and
@@ -154,27 +164,18 @@
         </div>
 
         <!-- Key Focus Areas -->
-        <h3
-          style="
-            margin-top: 32px;
-            margin-bottom: 16px;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--accent);
-          "
-        >
-          Key Focus Areas
-        </h3>
-        <ul style="line-height: 1.9; margin-left: 20px">
+        <h3 class="subsection-title">My personal favorite projects...</h3>
+        <ul class="focus-list">
           <li>Georgia Power Outage spatio-temporal analysis</li>
+          <li>Georgia Tech Campus network movement model and analysis</li>
           <li>
-            Using Microsoft Building Footprint Data and local parcel data to map
-            solar roof energy potential
+            Using Microsoft Building Footprints and Fulton County parcels to map
+            solar energy potential
           </li>
           <li>Using LiDAR and NDVI to map urban canopy heights</li>
           <li>
-            Using local parcel data and ancillary data to rank reusability of
-            vacant parcels
+            Using Fulton County parcel data to rank reusability of vacant
+            parcels in Atlanta
           </li>
         </ul>
       </section>
@@ -184,103 +185,125 @@
 
         <div class="timeline">
           <div class="timeline-item">
-            <h3>NREL — Building Performance Modeling Group</h3>
-            <div class="sub">
-              Research Intern • 2024–2025 • Denver, CO (remote)
-            </div>
-            <ul>
-              <li>
-                Experimented with predictive models for Atlanta building EUI
-                using per-building surrounding spatial features
-              </li>
-              <li>
-                Developed and integrated custom analyses for NREL's SEED tool
-                such as
-                <ul>
-                  <li>
-                    Surrounding building density and heights using Microsoft
-                    Building Footprint Data
-                  </li>
-                  <li>
-                    Heating and cooling degree days at that building's location
-                    using GridMET data
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">GeoPandas</span
-              ><span class="tag">H3</span><span class="tag">xarray</span>
+            <h3>Graduate Summer Intern - Building Performance Modeling</h3>
+            <div class="sub">National Renewable Energy Laboratory (NREL)</div>
+            <div class="sub">May 2025 – August 2025 • Denver, CO (remote)</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>
+                  Experimented with predictive models for Atlanta building EUI
+                  using per-building surrounding spatial features
+                </li>
+                <li>
+                  Developed and integrated custom analyses for NREL's SEED tool
+                  such as
+                  <ul>
+                    <li>
+                      Surrounding building density and heights using Microsoft
+                      Building Footprint Data
+                    </li>
+                    <li>
+                      Heating and cooling degree days at that building's
+                      location using GridMET data
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">GeoPandas</span
+                ><span class="tag">H3</span><span class="tag">xarray</span>
+              </div>
             </div>
           </div>
 
           <div class="timeline-item">
-            <h3>DoE FOA Georgia EnergyShed (DE-FOA-0002565, #2565-1535)</h3>
+            <h3>Graduate Research Assistant</h3>
             <div class="sub">
-              Graduate Research Assistant • 2023–2025 • Atlanta, GA
+              DoE FOA Georgia EnergyShed (DE-FOA-0002565, #2565-1535)
             </div>
-            <ul>
-              <li>Campus-scale Movement model</li>
-            </ul>
+            <div class="sub">2023–2025 • Atlanta, GA</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>Campus-scale Movement model</li>
+              </ul>
+            </div>
           </div>
 
           <div class="timeline-item">
-            <h3>Georgia Institute of Technology — Smart Campus</h3>
+            <h3>Graduate Research Assistant</h3>
             <div class="sub">
-              Graduate Research Assistant • 2022–Present • Atlanta, GA
+              Georgia Institute of Technology — Smart Campus
             </div>
-            <ul>
-              <li>Campus-scale Movement model</li>
-              <li>Campus Canopy height mapping</li>
-              <li>Campus Work order mapping and visualization</li>
-              <li>
-                Created dashboards in Vue.js to help campus facilities staff
-                observe building performance and sensor health
-              </li>
-              <li>
-                Provided geospatial support to develop a Python GIS-Modelica
-                translator, enabling non-technical users to interact with
-                complex Modelica simulation models through familiar GIS
-                interfaces like ArcGIS Pro.
-              </li>
-              <li>
-                Published how deviations from concave Q-W relationships can
-                identify system inefficiencies in HVAC operations, leading to
-                potential energy savings.
-              </li>
-              <li>
-                Addressed inquiries about construction feasibility and HVAC
-                capacity using scenario simulations in Modelica.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">GeoPandas</span
-              ><span class="tag">H3</span><span class="tag">xarray</span
-              ><span class="tag">Streamlit</span><span class="tag">PostGIS</span
-              ><span class="tag">NumPy</span><span class="tag">Vue.js</span
-              ><span class="tag">Modelica</span
-              ><span class="tag">ArcGIS Pro</span>
+            <div class="sub">2022–Present • Atlanta, GA</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>Campus-scale Movement model</li>
+                <li>Campus Canopy height mapping</li>
+                <li>Campus Work order mapping and visualization</li>
+                <li>
+                  Created dashboards in Vue.js to help campus facilities staff
+                  observe building performance and sensor health
+                </li>
+                <li>
+                  Provided geospatial support to develop a Python GIS-Modelica
+                  translator, enabling non-technical users to interact with
+                  complex Modelica simulation models through familiar GIS
+                  interfaces like ArcGIS Pro.
+                </li>
+                <li>
+                  Published how deviations from concave Q-W relationships can
+                  identify system inefficiencies in HVAC operations, leading to
+                  potential energy savings.
+                </li>
+                <li>
+                  Addressed inquiries about construction feasibility and HVAC
+                  capacity using scenario simulations in Modelica.
+                </li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">GeoPandas</span
+                ><span class="tag">H3</span><span class="tag">xarray</span
+                ><span class="tag">Streamlit</span
+                ><span class="tag">PostGIS</span><span class="tag">NumPy</span
+                ><span class="tag">Vue.js</span><span class="tag">Modelica</span
+                ><span class="tag">ArcGIS Pro</span>
+              </div>
             </div>
           </div>
           <div class="timeline-item">
-            <h3>Georgia Institute of Technology — Hyperloop GT HERMES</h3>
+            <h3>Undergraduate Research Assistant</h3>
             <div class="sub">
-              Undergraduate Research Assistant • 2018–2022 • Atlanta, GA
+              Georgia Institute of Technology — Hyperloop GT HERMES
             </div>
-            <ul>
-              <li>
-                Published reliability-based design optimizations on the
-                hyperloop tube to determine a cost-optimal tube design.
-              </li>
-              <li>
-                Used Java to augment a multimodal transport demand architecture
-                which found optimal fares and market share.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Java</span>
-              <span class="tag">Python</span>
-              <span class="tag">MATLAB</span>
+            <div class="sub">2018–2022 • Atlanta, GA</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>
+                  Published reliability-based design optimizations on the
+                  hyperloop tube to determine a cost-optimal tube design.
+                </li>
+                <li>
+                  Used Java to augment a multimodal transport demand
+                  architecture which found optimal fares and market share.
+                </li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">Python</span>
+                <span class="tag">MATLAB</span>
+              </div>
             </div>
           </div>
         </div>
@@ -295,36 +318,42 @@
             Open-source geospatial toolkit for homogenizing, interpolating, and
             visualizing spatial data
           </div>
-          <ul>
-            <li>
-              Developed in-house at Georgia Tech, by Adrian Mungroo and
-              preceeding researchers.
-            </li>
-            <li>
-              Deployment of CAKE to be leveraged in SEEA, City of Atlanta, and
-              NREL’s Equitable Building Performance Standards FOA Award project.
-            </li>
-            <li>
-              CAKE has already diagnosed spatial distribution issues within
-              ANL’s POLARIS Atlanta model.
-            </li>
-            <li>
-              CAKE is the backbone of all spatial analyses at Georgia Tech's
-              Smart Campus team.
-            </li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">H3</span>
-            <span class="tag">Geopandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">xarray</span>
-            <span class="tag">Matplotlib</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">PostGIS</span>
-            <span class="tag">Git</span>
-            <span class="tag">ArcGIS Pro</span>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Developed in-house at Georgia Tech, by Adrian Mungroo and
+                preceeding researchers.
+              </li>
+              <li>
+                Deployment of CAKE to be leveraged in SEEA, City of Atlanta, and
+                NREL's Equitable Building Performance Standards FOA Award
+                project.
+              </li>
+              <li>
+                CAKE has already diagnosed spatial distribution issues within
+                ANL's POLARIS Atlanta model.
+              </li>
+              <li>
+                CAKE is the backbone of all spatial analyses at Georgia Tech's
+                Smart Campus team.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">H3</span>
+              <span class="tag">Geopandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">xarray</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">PostGIS</span>
+              <span class="tag">Git</span>
+              <span class="tag">ArcGIS Pro</span>
+            </div>
           </div>
         </div>
       </section>
@@ -333,29 +362,34 @@
         <h2 class="section-title">Publications</h2>
         <div class="item">
           <h3>
-            Fatigue-sensitive Feature Extraction, Failure Prediction and
-            Reliability-based Design Optimization of the Hyperloop Tube
+            Leveraging Convexity on Performance Envelope to Detect and Reduce
+            Energy Faults in HVAC Systems
           </h3>
-          <div class="sub">October, 2023</div>
-          <ul>
-            <li>
-              Developed fatigue failure framework for Hyperloop tubes
-              integrating thermal, pod-induced, and atmospheric stresses using
-              rainflow counting and Palmgren-Miner cumulative damage analysis
-            </li>
-            <li>
-              Identified support spacing, material ultimate tensile strength,
-              and tube radius as critical design variables through sensitivity
-              analysis; found underground systems 12x more resilient than
-              above-ground
-            </li>
-            <li>
-              Performed reliability-based design optimization under demand
-              uncertainty, determining optimal support spacing (186.6 m) and
-              tube radius (152.2 cm) while maintaining less than5% failure
-              probability over five years
-            </li>
-          </ul>
+          <div class="sub">August, 2025</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Developed system-level fault detection framework using Q-W
+                performance curve concavity analysis to identify energy faults
+                in district chilled water systems without extensive
+                instrumentation
+              </li>
+              <li>
+                Established pseudo-performance boundaries from operational data
+                using convexity points and validated with Modelica simulations
+                of a 7-chiller campus cooling plant
+              </li>
+              <li>
+                Quantified energy savings potential across operating conditions
+                and identified specific faults (e.g., secondary pump
+                inefficiencies) causing deviations from optimal thermodynamic
+                performance
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="item">
@@ -364,56 +398,78 @@
             and BAS Interoperable Buildings
           </h3>
           <div class="sub">January, 2024</div>
-          <ul>
-            <li>
-              Developed hybrid data validation framework combining physics-based
-              models and statistical methods for BEM/BAS interoperability
-            </li>
-            <li>
-              Designed sensor grouping system that consolidated 60+ readings
-              into automated anomaly detection and data reconstruction
-            </li>
-            <li>
-              Demonstrated framework effectiveness through sensor drift
-              detection and equipment performance monitoring case studies
-            </li>
-          </ul>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Developed hybrid data validation framework combining
+                physics-based models and statistical methods for BEM/BAS
+                interoperability
+              </li>
+              <li>
+                Designed sensor grouping system that consolidated 60+ readings
+                into automated anomaly detection and data reconstruction
+              </li>
+              <li>
+                Demonstrated framework effectiveness through sensor drift
+                detection and equipment performance monitoring case studies
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="item">
           <h3>
-            Leveraging Convexity on Performance Envelope to Detect and Reduce
-            Energy Faults in HVAC Systems
+            Fatigue-sensitive Feature Extraction, Failure Prediction and
+            Reliability-based Design Optimization of the Hyperloop Tube
           </h3>
-          <div class="sub">August, 2025</div>
-          <ul>
-            <li>
-              Developed system-level fault detection framework using Q-W
-              performance curve concavity analysis to identify energy faults in
-              district chilled water systems without extensive instrumentation
-            </li>
-            <li>
-              Established pseudo-performance boundaries from operational data
-              using convexity points and validated with Modelica simulations of
-              a 7-chiller campus cooling plant
-            </li>
-            <li>
-              Quantified energy savings potential across operating conditions
-              and identified specific faults (e.g., secondary pump
-              inefficiencies) causing deviations from optimal thermodynamic
-              performance
-            </li>
-          </ul>
+          <div class="sub">October, 2023</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Developed fatigue failure framework for Hyperloop tubes
+                integrating thermal, pod-induced, and atmospheric stresses using
+                rainflow counting and Palmgren-Miner cumulative damage analysis
+              </li>
+              <li>
+                Identified support spacing, material ultimate tensile strength,
+                and tube radius as critical design variables through sensitivity
+                analysis; found underground systems 12x more resilient than
+                above-ground
+              </li>
+              <li>
+                Performed reliability-based design optimization under demand
+                uncertainty, determining optimal support spacing (186.6 m) and
+                tube radius (152.2 cm) while maintaining less than5% failure
+                probability over five years
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <section id="education">
         <h2 class="section-title">Education</h2>
         <div class="item">
-          <h3>Georgia Institute of Technology</h3>
-          <div class="sub">
-            PhD, Mechanical Engineering — Geostatistics focus • 2023–Present
-          </div>
+          <h3>PhD Candidate in Mechanical Engineering</h3>
+          <div class="sub">Georgia Institute of Technology</div>
+          <div class="sub">2023–Present</div>
+          <p class="description">Advisor: Dr. Bert Bras</p>
+        </div>
+        <div class="item">
+          <h3>M.S., Mechanical Engineering</h3>
+          <div class="sub">Georgia Institute of Technology</div>
+          <div class="sub">2022–2025</div>
+        </div>
+        <div class="item">
+          <h3>B.S., Aerospace Engineering</h3>
+          <div class="sub">Georgia Institute of Technology</div>
+          <div class="sub">2016–2020</div>
         </div>
       </section>
 

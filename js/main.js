@@ -24,6 +24,22 @@
     }
   }
 
+  /**
+   * Toggle publication details visibility
+   */
+  window.toggleDetails = function (button) {
+    const details = button.nextElementSibling;
+    const isHidden = details.style.display === "none";
+
+    if (isHidden) {
+      details.style.display = "block";
+      button.textContent = "Less info ▲";
+    } else {
+      details.style.display = "none";
+      button.textContent = "More info ▼";
+    }
+  };
+
   // Initialize when DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
@@ -31,4 +47,3 @@
     init();
   }
 })();
-
