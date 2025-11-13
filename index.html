@@ -143,7 +143,10 @@
       <section id="about">
         <h2 class="section-title">About</h2>
         <p class="intro-text">
-          Hey there! I'm Adrian, a PhD researcher exploring how space, data, and energy shape each other. I use geostatistics and large-scale spatial modeling to understand how cities grow, where infrastructure struggles, and how we can make urban energy systems more resilient.
+          Hey there! I'm Adrian, a PhD researcher exploring how space, data, and
+          energy shape each other. I use geostatistics and large-scale spatial
+          modeling to understand how cities grow, where infrastructure
+          struggles, and how we can make urban energy systems more resilient.
         </p>
 
         <!-- Stats -->
@@ -163,7 +166,9 @@
         </div>
 
         <!-- Key Focus Areas -->
-        <h3 class="subsection-title">My personal favorite projects include... </h3>
+        <h3 class="subsection-title">
+          My personal favorite projects include...
+        </h3>
         <ul class="focus-list">
           <li>Georgia Power Outage spatio-temporal analysis</li>
           <li>Georgia Tech Campus network movement model and analysis</li>
@@ -252,7 +257,15 @@
                   websites using Streamlit.
                 </li>
                 <li>
-                  Used Fulton County parcel data and Microsoft Building Footprint data to <a href="https://energyshed-dashboard.streamlit.app/energyshed_sunroof_project" target="_blank" rel="noopener noreferrer">map solar rooftop energy potential</a> for Fulton County.
+                  Used Fulton County parcel data and Microsoft Building
+                  Footprint data to
+                  <a
+                    href="https://energyshed-dashboard.streamlit.app/energyshed_sunroof_project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >map solar rooftop energy potential</a
+                  >
+                  for Fulton County.
                 </li>
                 <li>
                   Provided geospatial data to support the development of an
@@ -399,7 +412,7 @@
                 </li>
                 <li>
                   Used Monte-Carlo simulations in FLUKA and MATLAB to
-                  investigate the radiation shielding properties of a Martial
+                  investigate the radiation shielding properties of a Martian
                   in-situ construction material called Ferrock.
                 </li>
                 <li>
@@ -444,7 +457,7 @@
         <div class="item">
           <h3>
             Ranking Site Suitability for Data Centers in Fulton County, Atlanta
-          </h3> 
+          </h3>
           <div class="sub">January 2025 - February 2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -452,16 +465,18 @@
           <div class="details" style="display: none">
             <ul>
               <li>
-                Used Fulton County parcel data, along with many other external datasets such as Microsoft Building Footprint data, electrical grid data, socioeconomic data, climate and earthquake data to rank the site suitability for data centers in Fulton County, Atlanta.
+                Used Fulton County parcel data, along with many other external
+                datasets such as Microsoft Building Footprint data, electrical
+                grid data, socioeconomic data, climate and earthquake data to
+                rank the site suitability for data centers in Fulton County,
+                Atlanta.
               </li>
             </ul>
           </div>
         </div>
 
         <div class="item">
-          <h3>
-            Georgia Power Outage Spatio-temporal Analysis
-          </h3> 
+          <h3>Georgia Power Outage Spatio-temporal Analysis</h3>
           <div class="sub">2024-2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -471,29 +486,33 @@
               <li>
                 Collected power outage data every 15 minutes from November 2024.
               </li>
+              <li>Calculated outage duration for each outage event.</li>
               <li>
-                Calculated outage duration for each outage event.
+                Used <a href="#projects">CAKE</a> to bin the outages into
+                hexagon areas roughly the size of a neighborhood, maintaining
+                the ability to track local outages over time per hexagon.
               </li>
               <li>
-                Used <a href="#projects">CAKE</a> to bin the outages into hexagon areas roughly the size of a neighborhood, maintaining the ability to track local outages over time per hexagon.
+                Incorporated many external datasets such as socioeconomic data,
+                weather data, and building data to facilitate comprehensive
+                analysis.
               </li>
               <li>
-                Incorporated many external datasets such as socioeconomic data, weather data, and building data to facilitate comprehensive analysis.
+                Performed statistical analysis to identify patterns and trends
+                in the outages, identifying if power outages correlate with
+                socioeconomic factors, weather patterns, or building
+                characteristics - and how these correlations change over space.
               </li>
               <li>
-                Performed statistical analysis to identify patterns and trends in the outages, identifying if power outages correlate with socioeconomic factors, weather patterns, or building characteristics - and how these correlations change over space.
-              </li>
-              <li>
-                Performed time series analysis to identify if outages occur sooner or later in the particular neighborhoods.
+                Performed time series analysis to identify if outages occur
+                sooner or later in the particular neighborhoods.
               </li>
             </ul>
           </div>
         </div>
 
         <div class="item">
-          <h3>
-            Georgia Digital Surface Model (DSM) Generation
-          </h3> 
+          <h3>Georgia Digital Surface Model (DSM) Generation</h3>
           <div class="sub">Jan 2025 - August 2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -501,27 +520,29 @@
           <div class="details" style="display: none">
             <ul>
               <li>
-                Collected LIDAR and Digital Elevation Model (DEM) data for Georgia, incorporating it into <a href="#projects">CAKE</a>. 
+                Collected LIDAR and Digital Elevation Model (DEM) data for
+                Georgia, incorporating it into <a href="#projects">CAKE</a>.
               </li>
               <li>
-                Performed spatial raster calculations to create a Digital Surface Model (DSM) for Georgia.
+                Performed spatial raster calculations to create a Digital
+                Surface Model (DSM) for Georgia.
               </li>
             </ul>
           </div>
         </div>
 
         <div class="item">
-          <h3>
-            Georgia Tree Canopy Height Model Generation
-          </h3> 
+          <h3>Georgia Tree Canopy Height Model Generation</h3>
           <div class="sub">June 2025 - August 2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
-          </button> 
+          </button>
           <div class="details" style="display: none">
             <ul>
               <li>
-                Used the DSM data along with NDVI (Normalized Difference Vegetation Index) data to create a tree canopy height map for Georgia.
+                Used the DSM data along with NDVI (Normalized Difference
+                Vegetation Index) data to create a tree canopy height map for
+                Georgia.
               </li>
             </ul>
           </div>
@@ -530,7 +551,7 @@
         <div class="item">
           <h3>
             Ranking Reusability of Vacant Parcels in Fulton County, Atlanta
-          </h3> 
+          </h3>
           <div class="sub">June 2024 - August 2024 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -538,7 +559,11 @@
           <div class="details" style="display: none">
             <ul>
               <li>
-                Used Fulton County parcel data, along with many other external datasets such as Microsoft Building Footprint data and transportation infrastructure data to rank the reusability of vacant parcels in Atlanta for three reuse scenarios: residential, commercial, and industrial.
+                Used Fulton County parcel data, along with many other external
+                datasets such as Microsoft Building Footprint data and
+                transportation infrastructure data to rank the reusability of
+                vacant parcels in Atlanta for three reuse scenarios:
+                residential, commercial, and industrial.
               </li>
             </ul>
           </div>
@@ -562,7 +587,7 @@
             <ul>
               <li>
                 Developed in-house at Georgia Tech, by Adrian Mungroo and
-                preceeding researchers.
+                preceding researchers.
               </li>
               <li>
                 Deployment of CAKE to be leveraged in SEEA, City of Atlanta, and
@@ -730,7 +755,7 @@
               <li>
                 Performed reliability-based design optimization under demand
                 uncertainty, determining optimal support spacing (186.6 m) and
-                tube radius (152.2 cm) while maintaining less than5% failure
+                tube radius (152.2 cm) while maintaining less than 5% failure
                 probability over five years
               </li>
             </ul>
@@ -773,7 +798,8 @@
         </div>
         <div class="item">
           <h3>
-            Modeling Urban Growth, Energy Inequality, and Infrastructure Stress Through a Unified Hex-Based Simulation Framework
+            Modeling Urban Growth, Energy Inequality, and Infrastructure Stress
+            Through a Unified Hex-Based Simulation Framework
           </h3>
           <div class="sub">Mungroo, A., et al.</div>
           <div class="sub">
@@ -786,9 +812,14 @@
           <div class="details" style="display: none">
             <ul>
               <li>
-                Presents an integrated modeling framework that fuses historical land-cover change (NLCD), socioeconomic evolution (ACS), and projected urban growth to simulate how metropolitan regions expand—and who bears the resulting energy burden.
+                Presents an integrated modeling framework that fuses historical
+                land-cover change (NLCD), socioeconomic evolution (ACS), and
+                projected urban growth to simulate how metropolitan regions
+                expand—and who bears the resulting energy burden.
               </li>
             </ul>
+          </div>
+        </div>
       </section>
 
       <section id="education">
