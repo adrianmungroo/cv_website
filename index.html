@@ -129,8 +129,10 @@
           <nav>
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
+            <a href="#independent-research">Independent Research</a>
             <a href="#projects">Projects</a>
             <a href="#publications">Publications</a>
+            <a href="#future-publications">Future Publications</a>
             <a href="#education">Education</a>
             <a href="#skills">Skills</a>
           </nav>
@@ -141,10 +143,7 @@
       <section id="about">
         <h2 class="section-title">About</h2>
         <p class="intro-text">
-          Hey there! I'm Adrian, a Mechanical Engineering PhD focusing on
-          spatial analytics and geostatistics for energy systems. I build
-          spatial models to understand and improve the equity, resilience, and
-          performance of urban infrastructure.
+          Hey there! I'm Adrian, a PhD researcher exploring how space, data, and energy shape each other. I use geostatistics and large-scale spatial modeling to understand how cities grow, where infrastructure struggles, and how we can make urban energy systems more resilient.
         </p>
 
         <!-- Stats -->
@@ -164,7 +163,7 @@
         </div>
 
         <!-- Key Focus Areas -->
-        <h3 class="subsection-title">My personal favorite projects...</h3>
+        <h3 class="subsection-title">My personal favorite projects include... </h3>
         <ul class="focus-list">
           <li>Georgia Power Outage spatio-temporal analysis</li>
           <li>Georgia Tech Campus network movement model and analysis</li>
@@ -220,7 +219,7 @@
           </div>
 
           <div class="timeline-item">
-            <h3>Graduate Research Assistant</h3>
+            <h3>Graduate Researcher - Urban Energy Systems</h3>
             <div class="sub">
               DoE FOA Georgia EnergyShed (DE-FOA-0002565, #2565-1535)
             </div>
@@ -230,13 +229,47 @@
             </button>
             <div class="details" style="display: none">
               <ul>
-                <li>Campus-scale Movement model</li>
+                <li>
+                  Created <a href="#projects">CAKE</a> to serve as the data
+                  processing and visualization backbone for the project's
+                  spatial analytics.
+                </li>
+                <li>
+                  Created the Energyshed
+                  <a
+                    href="https://energyshed-dashboard.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Developer</a
+                  >
+                  and
+                  <a
+                    href="https://communication-tool.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Communication Tool</a
+                  >
+                  websites using Streamlit.
+                </li>
+                <li>
+                  Used Fulton County parcel data and Microsoft Building Footprint data to <a href="https://energyshed-dashboard.streamlit.app/energyshed_sunroof_project" target="_blank" rel="noopener noreferrer">map solar rooftop energy potential</a> for Fulton County.
+                </li>
+                <li>
+                  Provided geospatial data to support the development of an
+                  agent-based framework that uses over 2 million building energy
+                  profiles for holistic energy system analysis.
+                </li>
+                <li>
+                  Collaborated with NREL, PNNL, EPRI, Argonne National Labs, and
+                  community organizations such as Atlanta Regional Commision and
+                  Southface Institute.
+                </li>
               </ul>
             </div>
           </div>
 
           <div class="timeline-item">
-            <h3>Graduate Research Assistant</h3>
+            <h3>Graduate Researcher - Spatial & Statistical Data Analytics</h3>
             <div class="sub">
               Georgia Institute of Technology — Smart Campus
             </div>
@@ -246,23 +279,58 @@
             </button>
             <div class="details" style="display: none">
               <ul>
-                <li>Campus-scale Movement model</li>
-                <li>Campus Canopy height mapping</li>
-                <li>Campus Work order mapping and visualization</li>
                 <li>
-                  Created dashboards in Vue.js to help campus facilities staff
-                  observe building performance and sensor health
+                  <a
+                    href="https://movement-model.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Campus-scale movement model</a
+                  >
+                  using Georgia Tech's WiFi data.
+                  <ul>
+                    <li>
+                      Manually created a node and edge network model for campus
+                      in ArcGIS Pro, detailing every possible path of movement
+                      on campus.
+                    </li>
+                    <li>
+                      Created data structure to store movement events from the
+                      raw WiFi access point log data.
+                    </li>
+                    <li>
+                      Created congestion time series for all sidewalks and
+                      walkways in the campus using the movement events.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Created a canopy height map of Georgia Tech's campus using
+                  LiDAR and NDVI data.
+                </li>
+                <li>
+                  <a
+                    href="https://campus-work-distribution-20-rv2phdicoqjncmdq47t5xx.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Campus Work order mapping and visualization</a
+                  >
+                  using Georgia Tech's work order data.
+                </li>
+                <li>
+                  <a
+                    href="https://energywatch.gatech.edu/kb-EUI/#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Campus performance dashboard</a
+                  >
+                  using Georgia Tech's building performance and sensor health
+                  data.
                 </li>
                 <li>
                   Provided geospatial support to develop a Python GIS-Modelica
                   translator, enabling non-technical users to interact with
                   complex Modelica simulation models through familiar GIS
                   interfaces like ArcGIS Pro.
-                </li>
-                <li>
-                  Published how deviations from concave Q-W relationships can
-                  identify system inefficiencies in HVAC operations, leading to
-                  potential energy savings.
                 </li>
                 <li>
                   Addressed inquiries about construction feasibility and HVAC
@@ -280,7 +348,7 @@
             </div>
           </div>
           <div class="timeline-item">
-            <h3>Undergraduate Research Assistant</h3>
+            <h3>Undergraduate Researcher</h3>
             <div class="sub">
               Georgia Institute of Technology — Hyperloop GT HERMES
             </div>
@@ -294,17 +362,185 @@
                   Published reliability-based design optimizations on the
                   hyperloop tube to determine a cost-optimal tube design.
                 </li>
+                <li>Sponsored by South Korean steel industry giant, POSCO.</li>
                 <li>
                   Used Java to augment a multimodal transport demand
                   architecture which found optimal fares and market share.
+                </li>
+                <li>
+                  Utilized DoE and surrogate models to create a parametric
+                  modeling and simulation environment to predict demand and
+                  profitability of a Stockholm-Helsinki Hyperloop.
                 </li>
               </ul>
               <div class="tags">
                 <span class="tag">Java</span>
                 <span class="tag">Python</span>
                 <span class="tag">MATLAB</span>
+                <span class="tag">Design of Experiments</span>
+                <span class="tag">Surrogate Models</span>
               </div>
             </div>
+          </div>
+          <div class="timeline-item">
+            <h3>Undergraduate Researcher</h3>
+            <div class="sub">
+              Georgia Tech Martian Advanced Renewable Systems (M.A.R.S)
+            </div>
+            <div class="sub">2017–2018 • Atlanta, GA</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>
+                  Won 2nd place and a $1000 prize in the Spring 2018 VIP
+                  Research Competition for our project.
+                </li>
+                <li>
+                  Used Monte-Carlo simulations in FLUKA and MATLAB to
+                  investigate the radiation shielding properties of a Martial
+                  in-situ construction material called Ferrock.
+                </li>
+                <li>
+                  Found that Ferrock is a promising material for radiation
+                  shielding in space applications when enriched with
+                  polypropylene.
+                </li>
+              </ul>
+              <div class="tags">
+                <span class="tag">FLUKA</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">Monte-Carlo Simulations</span>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <h3>Undergraduate Researcher</h3>
+            <div class="sub">Create-X I2P - Team Gyrolauncher</div>
+            <div class="sub">Jan 2017 – May 2017 • Atlanta, GA</div>
+            <button class="toggle-btn" onclick="toggleDetails(this)">
+              More info ▼
+            </button>
+            <div class="details" style="display: none">
+              <ul>
+                <li>
+                  Used MATLAB to develop a surface-to-orbit trajectory simulator
+                  for a spherical payload.
+                </li>
+                <li>
+                  Used the Arduino to create a hall sensor tachometer to ensure
+                  desired launch angles on a scaled-down prototype.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="independent-research">
+        <h2 class="section-title">Independent Research & Development</h2>
+
+        <div class="item">
+          <h3>
+            Ranking Site Suitability for Data Centersin Fulton County, Atlanta
+          </h3> 
+          <div class="sub">January 2025 - February 2025 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Used Fulton County parcel data, along with many other external datasets such as Microsoft Building Footprint data, electrical grid data, socioeconomic data, climate and earthquake data to rank the site suitability for data centers in Fulton County, Atlanta.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>
+            Georgia Power Outage Spatio-temporal Analysis
+          </h3> 
+          <div class="sub">2024-2025 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Collected power outage data every 15 minutes from November 2024.
+              </li>
+              <li>
+                Calculated outage duration for each outage event.
+              </li>
+              <li>
+                Used <a href="#projects">CAKE</a> to bin the outages into hexagon areas roughly the size of a neighborhood, maintaining the ability to track local outages over time per hexagon.
+              </li>
+              <li>
+                Incorporated many external datasets such as socioeconomic data, weather data, and building data to facilitate comprehensive analysis.
+              </li>
+              <li>
+                Performed statistical analysis to identify patterns and trends in the outages, identifying if power outages correlate with socioeconomic factors, weather patterns, or building characteristics - and how these correlations change over space.
+              </li>
+              <li>
+                Performed time series analysis to identify if outages occur sooner or later in the particular neighborhoods.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>
+            Georgia Digital Surface Model (DSM) Generation
+          </h3> 
+          <div class="sub">Jan 2025 - August 2025 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Collected LIDAR and Digital Elevation Model (DEM) data for Georgia, incorporating it into <a href="#projects">CAKE</a>. 
+              </li>
+              <li>
+                Performed spatial raster calculations to create a Digital Surface Model (DSM) for Georgia.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>
+            Georgia Tree Canopy Height Model Generation
+          </h3> 
+          <div class="sub">June 2025 - August 2025 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button> 
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Used the DSM data along with NDVI (Normalized Difference Vegetation Index) data to create a tree canopy height map for Georgia.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>
+            Ranking Reusability of Vacant Parcels in Fulton County, Atlanta
+          </h3> 
+          <div class="sub">June 2024 - August 2024 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Used Fulton County parcel data, along with many other external datasets such as Microsoft Building Footprint data and transportation infrastructure data to rank the reusability of vacant parcels in Atlanta for three reuse scenarios: residential, commercial, and industrial.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -318,6 +554,7 @@
             Open-source geospatial toolkit for homogenizing, interpolating, and
             visualizing spatial data
           </div>
+          <div class="sub">2024-2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
           </button>
@@ -356,6 +593,46 @@
             </div>
           </div>
         </div>
+
+        <div class="item">
+          <h3>Designing a Special Operations Military Aircraft - Megabat</h3>
+          <div class="sub">
+            Final Year Design Project for Georgia Tech's Aerospace Engineering
+            Bachelor's Degree
+          </div>
+          <div class="sub">2019–2020 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Performed convergent iterative weight sizing to determine
+                subsystem weights.
+              </li>
+              <li>
+                Determined the propulsion requirements of the craft using
+                constraint sizing methods.
+              </li>
+              <li>
+                Converged to a feasible design by iterating interconnected
+                aircraft subsystems.
+              </li>
+              <li>
+                Approximated the procurement and operational cost and compared
+                its financial performance to similar aircraft.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">MATLAB</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Aerodynamics</span>
+              <span class="tag">Propulsion</span>
+              <span class="tag">Structural Analysis</span>
+              <span class="tag">Constraint Sizing</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="publications">
@@ -365,6 +642,8 @@
             Leveraging Convexity on Performance Envelope to Detect and Reduce
             Energy Faults in HVAC Systems
           </h3>
+          <div class="sub">Lewe, J., Aziz, I., Mungroo, A., Solano, D.</div>
+          <div class="sub">2025 ASHRAE Annual Conference</div>
           <div class="sub">August, 2025</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -397,6 +676,8 @@
             From Data Lake to Digital Twin A Data Management Framework for BEM
             and BAS Interoperable Buildings
           </h3>
+          <div class="sub">Kim, H. W., Mungroo, A., Lewe, J.</div>
+          <div class="sub">ASHRAE (2024)</div>
           <div class="sub">January, 2024</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -425,6 +706,10 @@
             Fatigue-sensitive Feature Extraction, Failure Prediction and
             Reliability-based Design Optimization of the Hyperloop Tube
           </h3>
+          <div class="sub">Mungroo, A., Lewe, J.</div>
+          <div class="sub">
+            Journal of Infrastructure Intelligence and Resilience
+          </div>
           <div class="sub">October, 2023</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
@@ -453,12 +738,65 @@
         </div>
       </section>
 
+      <section id="future-publications">
+        <h2 class="section-title">Future Publications</h2>
+        <div class="item">
+          <h3>
+            Hexagon-Scale Energy Equity Modeling Using Integrated Socioeconomic,
+            Weather, and Outage Data
+          </h3>
+          <div class="sub">Mungroo, A., et al.</div>
+          <div class="sub">
+            Target: Energy Policy / Applied Energy (In Preparation)
+          </div>
+          <div class="sub">Expected Submission: Q3 2026</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Develops and validates a hexagon-based geospatial framework that
+                links building-level energy demand, socioeconomic vulnerability,
+                and outage episode histories into a single equity-focused
+                mapping system.
+              </li>
+              <li>
+                Demonstrates how multi-source datasets—ACS, Microsoft Building
+                Footprints, GridMET, NLCD land cover, and outage telemetry—can
+                be fused to produce neighborhood-level fairness metrics, risk
+                surfaces, and policy-relevant indicators for urban energy
+                planning.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="item">
+          <h3>
+            Modeling Urban Growth, Energy Inequality, and Infrastructure Stress Through a Unified Hex-Based Simulation Framework
+          </h3>
+          <div class="sub">Mungroo, A., et al.</div>
+          <div class="sub">
+            Target: Landscape and Urban Planning (In Preparation)
+          </div>
+          <div class="sub">Expected Submission: Q4 2026</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Presents an integrated modeling framework that fuses historical land-cover change (NLCD), socioeconomic evolution (ACS), and projected urban growth to simulate how metropolitan regions expand—and who bears the resulting energy burden.
+              </li>
+            </ul>
+      </section>
+
       <section id="education">
         <h2 class="section-title">Education</h2>
         <div class="item">
           <h3>PhD Candidate in Mechanical Engineering</h3>
           <div class="sub">Georgia Institute of Technology</div>
-          <div class="sub">2023–Present</div>
+          <div class="sub">2025–Present</div>
           <p class="description">Advisor: Dr. Bert Bras</p>
         </div>
         <div class="item">
@@ -484,41 +822,61 @@
               <span class="tag">H3</span>
               <span class="tag">PostGIS</span>
               <span class="tag">ArcGIS Pro</span>
-              <span class="tag">Shapely</span>
-              <span class="tag">Rasterio</span>
+              <span class="tag">QGIS</span>
+              <span class="tag">Many more Python libraries...</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h3>Data Science & ML</h3>
+            <h3>Data Science & Analysis</h3>
             <div class="skill-list">
               <span class="tag">Python</span>
-              <span class="tag">scikit-learn</span>
               <span class="tag">NumPy</span>
               <span class="tag">Pandas</span>
               <span class="tag">xarray</span>
+              <span class="tag">Scikit-learn</span>
               <span class="tag">Matplotlib</span>
+              <span class="tag">Many more Python libraries...</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h3>Development Tools</h3>
+            <h3>Web Development & Visualization</h3>
             <div class="skill-list">
-              <span class="tag">Git</span>
-              <span class="tag">Vue.js</span>
               <span class="tag">Streamlit</span>
-              <span class="tag">Java</span>
-              <span class="tag">MATLAB</span>
+              <span class="tag">Vue.js</span>
+              <span class="tag">Git</span>
             </div>
           </div>
 
           <div class="skill-category">
-            <h3>Energy & Simulation</h3>
+            <h3>Energy Systems & Simulation</h3>
             <div class="skill-list">
               <span class="tag">Modelica</span>
               <span class="tag">Building Energy Modeling</span>
               <span class="tag">HVAC Systems</span>
-              <span class="tag">GridMET</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Engineering & Modeling</h3>
+            <div class="skill-list">
+              <span class="tag">MATLAB</span>
+              <span class="tag">Java</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Design of Experiments</span>
+              <span class="tag">Surrogate Models</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Domain Expertise</h3>
+            <div class="skill-list">
+              <span class="tag">Geostatistics</span>
+              <span class="tag">Spatial Analytics</span>
+              <span class="tag">Energy Equity Analysis</span>
+              <span class="tag">Building Performance</span>
+              <span class="tag">Urban Energy Systems</span>
             </div>
           </div>
         </div>
