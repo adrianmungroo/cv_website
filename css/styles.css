@@ -591,6 +591,232 @@ section:hover {
   }
 }
 
+/* ---------- Tag Filter Panel ---------- */
+.tag-filter-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 380px;
+  height: 100vh;
+  background: var(--card);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid color-mix(in oklab, var(--fg), transparent 90%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tag-filter-panel.open {
+  right: 0;
+}
+
+.tag-filter-header {
+  padding: 24px;
+  border-bottom: 1px solid color-mix(in oklab, var(--fg), transparent 90%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: color-mix(in oklab, var(--card), var(--accent) 3%);
+}
+
+.tag-filter-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.close-filter-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+.close-filter-btn:hover {
+  background: color-mix(in oklab, var(--accent), transparent 85%);
+  color: var(--accent);
+}
+
+.tag-filter-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tag-filter-search {
+  margin-bottom: 8px;
+}
+
+.tag-filter-search input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 14px;
+  transition: var(--transition-fast);
+}
+
+.tag-filter-search input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 80%);
+}
+
+.tag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.tag-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.tag-filter-item:hover {
+  background: color-mix(in oklab, var(--card), var(--accent) 5%);
+}
+
+.tag-filter-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.tag-filter-item label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--fg);
+  user-select: none;
+}
+
+.tag-filter-item input[type="checkbox"]:checked + label {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tag-filter-item .tag-count {
+  font-size: 12px;
+  color: var(--muted);
+  background: color-mix(in oklab, var(--card), var(--accent) 8%);
+  padding: 4px 8px;
+  border-radius: 999px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.clear-filters-btn {
+  padding: 12px 20px;
+  background: color-mix(in oklab, var(--accent), transparent 85%);
+  border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-top: auto;
+}
+
+.clear-filters-btn:hover {
+  background: color-mix(in oklab, var(--accent), transparent 75%);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.filter-toggle-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  padding: 14px 20px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-hover);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.filter-toggle-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.filter-toggle-btn.active {
+  background: var(--accent-hover);
+}
+
+.filter-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Filtered out items */
+.item.filtered-out,
+.timeline-item.filtered-out {
+  display: none;
+}
+
+/* Overlay when panel is open */
+.tag-filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tag-filter-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /* ---------- Footer Component ---------- */
 footer {
   color: var(--muted);
@@ -682,6 +908,23 @@ footer {
 
   .stat-label {
     font-size: 12px;
+  }
+
+  /* Filter panel responsive */
+  .tag-filter-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .filter-toggle-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .filter-toggle-btn span {
+    display: none;
   }
 }
 

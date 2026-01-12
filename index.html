@@ -61,6 +61,51 @@
   </head>
 
   <body>
+    <!-- Tag Filter Overlay -->
+    <div id="tag-filter-overlay" class="tag-filter-overlay"></div>
+
+    <!-- Tag Filter Panel -->
+    <div id="tag-filter-panel" class="tag-filter-panel">
+      <div class="tag-filter-header">
+        <h3>Filter by Tags</h3>
+        <button
+          id="close-filter-btn"
+          class="close-filter-btn"
+          aria-label="Close filter panel"
+        >
+          ×
+        </button>
+      </div>
+      <div class="tag-filter-content">
+        <div class="tag-filter-search">
+          <input type="text" id="tag-search" placeholder="Search tags..." />
+        </div>
+        <div id="tag-list" class="tag-list"></div>
+        <button id="clear-filters-btn" class="clear-filters-btn">
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Toggle Button -->
+    <button
+      id="filter-toggle-btn"
+      class="filter-toggle-btn"
+      aria-label="Toggle tag filter"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+      </svg>
+      <span>Filter</span>
+    </button>
+
     <div class="wrap">
       <!-- Header: Profile information and navigation -->
       <header>
@@ -198,6 +243,11 @@
             </button>
             <div class="details" style="display: none">
               <ul>
+                <li>
+                  Created a
+                  <a href="#movement-model">movement model</a>
+                  of Georgia Tech's campus using WiFi access point log data.
+                </li>
                 <li>
                   Created a canopy height map of Georgia Tech's campus using
                   LiDAR and NDVI data.
@@ -448,6 +498,14 @@
                 Atlanta.
               </li>
             </ul>
+            <div class="tags">
+              <span class="tag">GIS</span>
+              <span class="tag">Python</span>
+              <span class="tag">GeoPandas</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">H3</span>
+              <span class="tag">xarray</span>
+            </div>
           </div>
         </div>
 
@@ -484,6 +542,12 @@
                 sooner or later in the particular neighborhoods.
               </li>
             </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">H3</span>
+              <span class="tag">xarray</span>
+            </div>
           </div>
         </div>
 
@@ -504,6 +568,12 @@
                 Surface Model (DSM) for Georgia.
               </li>
             </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">H3</span>
+              <span class="tag">xarray</span>
+            </div>
           </div>
         </div>
 
@@ -521,6 +591,12 @@
                 Georgia.
               </li>
             </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">H3</span>
+              <span class="tag">xarray</span>
+            </div>
           </div>
         </div>
 
@@ -542,6 +618,12 @@
                 residential, commercial, and industrial.
               </li>
             </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">H3</span>
+              <span class="tag">xarray</span>
+            </div>
           </div>
         </div>
       </section>
@@ -550,7 +632,7 @@
       <section id="projects">
         <h2 class="section-title">Projects</h2>
 
-        <div class="item">
+        <div class="item" id="movement-model">
           <h3>
             <a
               href="https://movement-model.streamlit.app/"
