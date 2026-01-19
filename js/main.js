@@ -167,11 +167,11 @@
       count.className = "tag-count";
       count.textContent = data.count;
 
-      // Add mode toggle button (OR/AND)
+      // Add mode toggle button (ANY/MUST/NONE)
       const modeToggle = document.createElement("button");
       modeToggle.className = "tag-mode-toggle";
-      modeToggle.textContent = "OR";
-      modeToggle.title = "Click to toggle between OR/AND mode";
+      modeToggle.textContent = "ANY";
+      modeToggle.title = "Click to cycle: ANY → MUST → NONE";
       modeToggle.style.display = "none"; // Hidden by default
       modeToggle.addEventListener("click", (e) => {
         e.preventDefault();
@@ -197,9 +197,9 @@
 
     if (e.target.checked) {
       selectedTags.add(tagText);
-      // Initialize as OR mode by default
+      // Initialize as ANY mode by default
       if (!tagModes.has(tagText)) {
-        tagModes.set(tagText, "OR");
+        tagModes.set(tagText, "ANY");
       }
       // Show the mode toggle button
       modeToggle.style.display = "inline-flex";
@@ -214,40 +214,40 @@
   }
 
   /**
-   * Toggle tag between OR, AND, and NOT modes
+   * Toggle tag between ANY, MUST, and NONE modes
    */
   function toggleTagMode(tagText, button) {
-    const currentMode = tagModes.get(tagText) || "OR";
+    const currentMode = tagModes.get(tagText) || "ANY";
     let newMode;
     
-    // Cycle through: OR → AND → NOT → OR
-    if (currentMode === "OR") {
-      newMode = "AND";
-    } else if (currentMode === "AND") {
-      newMode = "NOT";
+    // Cycle through: ANY → MUST → NONE → ANY
+    if (currentMode === "ANY") {
+      newMode = "MUST";
+    } else if (currentMode === "MUST") {
+      newMode = "NONE";
     } else {
-      newMode = "OR";
+      newMode = "ANY";
     }
     
     tagModes.set(tagText, newMode);
     
     button.textContent = newMode;
-    button.classList.remove("and-mode", "not-mode");
-    if (newMode === "AND") {
-      button.classList.add("and-mode");
-    } else if (newMode === "NOT") {
-      button.classList.add("not-mode");
+    button.classList.remove("must-mode", "none-mode");
+    if (newMode === "MUST") {
+      button.classList.add("must-mode");
+    } else if (newMode === "NONE") {
+      button.classList.add("none-mode");
     }
     
     applyFilters();
   }
 
   /**
-   * Apply filters to show/hide items
-   * Logic: (OR tags) AND (AND tags) AND NOT (NOT tags)
-   * - OR tags: item must have at least ONE of these
-   * - AND tags: item must have ALL of these
-   * - NOT tags: item must NOT have ANY of these
+   * Apply filters to show/hide items using three buckets
+   * Logic: (ANY bucket) AND (MUST bucket) AND (NONE bucket)
+   * - ANY bucket: item must have at least ONE of these tags
+   * - MUST bucket: item must have ALL of these tags
+   * - NONE bucket: item must have ZERO of these tags
    */
   function applyFilters() {
     const items = document.querySelectorAll(".item, .timeline-item");
@@ -260,19 +260,19 @@
       return;
     }
 
-    // Separate selected tags into OR, AND, and NOT groups
-    const orTags = [];
-    const andTags = [];
-    const notTags = [];
+    // Separate selected tags into three buckets
+    const anyTags = [];    // ANY bucket - must have at least one
+    const mustTags = [];   // MUST bucket - must have all
+    const noneTags = [];   // NONE bucket - must have none
     
     selectedTags.forEach((tag) => {
-      const mode = tagModes.get(tag) || "OR";
-      if (mode === "OR") {
-        orTags.push(tag);
-      } else if (mode === "AND") {
-        andTags.push(tag);
-      } else if (mode === "NOT") {
-        notTags.push(tag);
+      const mode = tagModes.get(tag) || "ANY";
+      if (mode === "ANY") {
+        anyTags.push(tag);
+      } else if (mode === "MUST") {
+        mustTags.push(tag);
+      } else if (mode === "NONE") {
+        noneTags.push(tag);
       }
     });
 
@@ -289,26 +289,26 @@
 
       let shouldShow = true;
 
-      // Check NOT condition first: must NOT have any NOT tags
-      if (notTags.length > 0) {
-        const hasNotTag = notTags.some((tag) => itemTags.includes(tag));
-        if (hasNotTag) {
+      // NONE bucket: must NOT have ANY of these tags
+      if (noneTags.length > 0) {
+        const hasNoneTag = noneTags.some((tag) => itemTags.includes(tag));
+        if (hasNoneTag) {
           shouldShow = false;
         }
       }
 
-      // Check OR condition: must match at least ONE OR tag (if any OR tags selected)
-      if (shouldShow && orTags.length > 0) {
-        const matchesOrTag = orTags.some((tag) => itemTags.includes(tag));
-        if (!matchesOrTag) {
+      // ANY bucket: must have at least ONE of these tags (if bucket not empty)
+      if (shouldShow && anyTags.length > 0) {
+        const hasAnyTag = anyTags.some((tag) => itemTags.includes(tag));
+        if (!hasAnyTag) {
           shouldShow = false;
         }
       }
 
-      // Check AND condition: must match ALL AND tags
-      if (shouldShow && andTags.length > 0) {
-        const matchesAllAndTags = andTags.every((tag) => itemTags.includes(tag));
-        if (!matchesAllAndTags) {
+      // MUST bucket: must have ALL of these tags
+      if (shouldShow && mustTags.length > 0) {
+        const hasAllMustTags = mustTags.every((tag) => itemTags.includes(tag));
+        if (!hasAllMustTags) {
           shouldShow = false;
         }
       }
@@ -380,8 +380,8 @@
     const modeToggles = tagList.querySelectorAll('.tag-mode-toggle');
     modeToggles.forEach((toggle) => {
       toggle.style.display = "none";
-      toggle.textContent = "OR";
-      toggle.classList.remove("and-mode", "not-mode");
+      toggle.textContent = "ANY";
+      toggle.classList.remove("must-mode", "none-mode");
     });
     applyFilters();
   }

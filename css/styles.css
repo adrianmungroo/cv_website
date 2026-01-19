@@ -813,19 +813,19 @@ section:hover {
   letter-spacing: 0.05em;
 }
 
-.mode-badge.or-mode {
+.mode-badge.any-mode {
   background: color-mix(in oklab, var(--accent), transparent 85%);
   color: var(--accent);
   border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
 }
 
-.mode-badge.and-mode {
+.mode-badge.must-mode {
   background: var(--accent);
   color: white;
   border: 1px solid var(--accent);
 }
 
-.mode-badge.not-mode {
+.mode-badge.none-mode {
   background: #ef4444;
   color: white;
   border: 1px solid #dc2626;
@@ -899,7 +899,7 @@ section:hover {
   transform: scale(1.05);
 }
 
-.tag-mode-toggle.and-mode {
+.tag-mode-toggle.must-mode {
   background: linear-gradient(
     135deg,
     color-mix(in oklab, var(--accent), transparent 20%),
@@ -910,14 +910,14 @@ section:hover {
   font-weight: 800;
 }
 
-.tag-mode-toggle.not-mode {
+.tag-mode-toggle.none-mode {
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
   border-color: #dc2626;
   font-weight: 800;
 }
 
-.tag-mode-toggle.not-mode:hover {
+.tag-mode-toggle.none-mode:hover {
   background: linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
