@@ -22,6 +22,7 @@
     initTagFilter();
     initWidthToggle();
     initThemeToggle();
+    initHashNavigation();
   }
 
   /**
@@ -47,6 +48,96 @@
         }
       });
     });
+  }
+
+  /**
+   * Switch to a specific tab by its ID
+   */
+  function switchToTab(tabId) {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+    const targetButton = document.querySelector(`[data-tab="${tabId}"]`);
+    const targetContent = document.getElementById(tabId);
+
+    if (!targetButton || !targetContent) return;
+
+    // Remove active class from all buttons and contents
+    tabButtons.forEach((btn) => btn.classList.remove("active"));
+    tabContents.forEach((content) => content.classList.remove("active"));
+
+    // Add active class to target button and content
+    targetButton.classList.add("active");
+    targetContent.classList.add("active");
+  }
+
+  /**
+   * Initialize hash navigation to handle internal links across tabs
+   */
+  function initHashNavigation() {
+    // Handle clicks on internal links
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[href^='#']");
+      if (!link) return;
+
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
+
+      const targetId = hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (!targetElement) return;
+
+      // Find which tab contains the target element
+      const parentTab = targetElement.closest(".tab-content");
+      if (!parentTab) return;
+
+      e.preventDefault();
+
+      // Switch to the correct tab
+      switchToTab(parentTab.id);
+
+      // Wait a moment for the tab to become visible, then scroll
+      setTimeout(() => {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 50);
+    });
+
+    // Also handle direct hash navigation (e.g., from URL)
+    function handleHash() {
+      const hash = window.location.hash;
+      if (!hash || hash === "#") return;
+
+      const targetId = hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (!targetElement) return;
+
+      // Find which tab contains the target element
+      const parentTab = targetElement.closest(".tab-content");
+      if (!parentTab) return;
+
+      // Switch to the correct tab
+      switchToTab(parentTab.id);
+
+      // Wait a moment for the tab to become visible, then scroll
+      setTimeout(() => {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+    }
+
+    // Handle hash on page load
+    if (window.location.hash) {
+      handleHash();
+    }
+
+    // Handle hash changes
+    window.addEventListener("hashchange", handleHash);
   }
 
   /**
