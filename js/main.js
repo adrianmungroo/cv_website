@@ -17,7 +17,35 @@
    */
   function init() {
     updateYear();
+    initTabs();
     initTagFilter();
+    initWidthToggle();
+    initThemeToggle();
+  }
+
+  /**
+   * Initialize tab switching functionality
+   */
+  function initTabs() {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tabId = button.dataset.tab;
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabContents.forEach((content) => content.classList.remove("active"));
+
+        // Add active class to clicked button and corresponding content
+        button.classList.add("active");
+        const activeContent = document.getElementById(tabId);
+        if (activeContent) {
+          activeContent.classList.add("active");
+        }
+      });
+    });
   }
 
   /**
@@ -253,6 +281,97 @@
       checkbox.checked = false;
     });
     applyFilters();
+  }
+
+  /**
+   * Initialize width toggle functionality
+   */
+  function initWidthToggle() {
+    const widthToggleBtn = document.getElementById("width-toggle-btn");
+    const wrap = document.querySelector(".wrap");
+
+    if (!widthToggleBtn || !wrap) return;
+
+    // Load saved preference from localStorage
+    const savedWidth = localStorage.getItem("layoutWidth");
+    if (savedWidth === "wide") {
+      wrap.classList.add("wide-layout");
+      widthToggleBtn.classList.add("wide");
+      widthToggleBtn.querySelector("span").textContent = "Narrow";
+    }
+
+    widthToggleBtn.addEventListener("click", () => {
+      const isWide = wrap.classList.toggle("wide-layout");
+      widthToggleBtn.classList.toggle("wide");
+
+      // Update button text
+      const buttonText = widthToggleBtn.querySelector("span");
+      if (buttonText) {
+        buttonText.textContent = isWide ? "Narrow" : "Wide";
+      }
+
+      // Save preference to localStorage
+      localStorage.setItem("layoutWidth", isWide ? "wide" : "narrow");
+    });
+  }
+
+  /**
+   * Initialize theme toggle functionality
+   */
+  function initThemeToggle() {
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const root = document.documentElement;
+    const sunIcon = themeToggleBtn?.querySelector(".sun-icon");
+    const moonIcon = themeToggleBtn?.querySelector(".moon-icon");
+    const buttonText = themeToggleBtn?.querySelector("span");
+
+    if (!themeToggleBtn) return;
+
+    // Function to update UI based on theme
+    function updateThemeUI(theme) {
+      if (theme === "dark") {
+        sunIcon.style.display = "none";
+        moonIcon.style.display = "block";
+        buttonText.textContent = "Light";
+      } else {
+        sunIcon.style.display = "block";
+        moonIcon.style.display = "none";
+        buttonText.textContent = "Dark";
+      }
+    }
+
+    // Load saved preference from localStorage or detect system preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      root.classList.add(savedTheme + "-mode");
+      updateThemeUI(savedTheme);
+    } else {
+      // Check system preference
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      updateThemeUI(prefersDark ? "dark" : "light");
+    }
+
+    themeToggleBtn.addEventListener("click", () => {
+      // Determine current theme
+      const currentTheme = localStorage.getItem("theme");
+      const isDark =
+        currentTheme === "dark" ||
+        (!currentTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      // Toggle to opposite theme
+      const newTheme = isDark ? "light" : "dark";
+
+      // Remove both classes first
+      root.classList.remove("light-mode", "dark-mode");
+      root.classList.add(newTheme + "-mode");
+      updateThemeUI(newTheme);
+
+      // Save preference to localStorage
+      localStorage.setItem("theme", newTheme);
+    });
   }
 
   // Initialize when DOM is ready
