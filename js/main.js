@@ -11,6 +11,7 @@
   let tagFilterPanel = null;
   let tagList = null;
   let tagSearch = null;
+  let tagModes = new Map(); // Store whether each tag is in OR or AND mode
 
   /**
    * Initialize the application
@@ -166,8 +167,20 @@
       count.className = "tag-count";
       count.textContent = data.count;
 
+      // Add mode toggle button (OR/AND)
+      const modeToggle = document.createElement("button");
+      modeToggle.className = "tag-mode-toggle";
+      modeToggle.textContent = "OR";
+      modeToggle.title = "Click to toggle between OR/AND mode";
+      modeToggle.style.display = "none"; // Hidden by default
+      modeToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleTagMode(tagText, modeToggle);
+      });
+
       filterItem.appendChild(checkbox);
       filterItem.appendChild(label);
+      filterItem.appendChild(modeToggle);
       filterItem.appendChild(count);
 
       tagList.appendChild(filterItem);
@@ -179,18 +192,62 @@
    */
   function handleTagToggle(e) {
     const tagText = e.target.value;
+    const filterItem = e.target.closest(".tag-filter-item");
+    const modeToggle = filterItem.querySelector(".tag-mode-toggle");
 
     if (e.target.checked) {
       selectedTags.add(tagText);
+      // Initialize as OR mode by default
+      if (!tagModes.has(tagText)) {
+        tagModes.set(tagText, "OR");
+      }
+      // Show the mode toggle button
+      modeToggle.style.display = "inline-flex";
     } else {
       selectedTags.delete(tagText);
+      tagModes.delete(tagText);
+      // Hide the mode toggle button
+      modeToggle.style.display = "none";
     }
 
     applyFilters();
   }
 
   /**
+   * Toggle tag between OR, AND, and NOT modes
+   */
+  function toggleTagMode(tagText, button) {
+    const currentMode = tagModes.get(tagText) || "OR";
+    let newMode;
+    
+    // Cycle through: OR → AND → NOT → OR
+    if (currentMode === "OR") {
+      newMode = "AND";
+    } else if (currentMode === "AND") {
+      newMode = "NOT";
+    } else {
+      newMode = "OR";
+    }
+    
+    tagModes.set(tagText, newMode);
+    
+    button.textContent = newMode;
+    button.classList.remove("and-mode", "not-mode");
+    if (newMode === "AND") {
+      button.classList.add("and-mode");
+    } else if (newMode === "NOT") {
+      button.classList.add("not-mode");
+    }
+    
+    applyFilters();
+  }
+
+  /**
    * Apply filters to show/hide items
+   * Logic: (OR tags) AND (AND tags) AND NOT (NOT tags)
+   * - OR tags: item must have at least ONE of these
+   * - AND tags: item must have ALL of these
+   * - NOT tags: item must NOT have ANY of these
    */
   function applyFilters() {
     const items = document.querySelectorAll(".item, .timeline-item");
@@ -203,21 +260,60 @@
       return;
     }
 
+    // Separate selected tags into OR, AND, and NOT groups
+    const orTags = [];
+    const andTags = [];
+    const notTags = [];
+    
+    selectedTags.forEach((tag) => {
+      const mode = tagModes.get(tag) || "OR";
+      if (mode === "OR") {
+        orTags.push(tag);
+      } else if (mode === "AND") {
+        andTags.push(tag);
+      } else if (mode === "NOT") {
+        notTags.push(tag);
+      }
+    });
+
     items.forEach((item) => {
       const itemTags = Array.from(item.querySelectorAll(".tag")).map((tag) =>
         tag.textContent.trim()
       );
 
-      // If item has no tags, always show it
+      // If item has no tags, hide it when filters are active
       if (itemTags.length === 0) {
-        item.classList.remove("filtered-out");
+        item.classList.add("filtered-out");
         return;
       }
 
-      // Check if item has any of the selected tags
-      const hasSelectedTag = itemTags.some((tag) => selectedTags.has(tag));
+      let shouldShow = true;
 
-      if (hasSelectedTag) {
+      // Check NOT condition first: must NOT have any NOT tags
+      if (notTags.length > 0) {
+        const hasNotTag = notTags.some((tag) => itemTags.includes(tag));
+        if (hasNotTag) {
+          shouldShow = false;
+        }
+      }
+
+      // Check OR condition: must match at least ONE OR tag (if any OR tags selected)
+      if (shouldShow && orTags.length > 0) {
+        const matchesOrTag = orTags.some((tag) => itemTags.includes(tag));
+        if (!matchesOrTag) {
+          shouldShow = false;
+        }
+      }
+
+      // Check AND condition: must match ALL AND tags
+      if (shouldShow && andTags.length > 0) {
+        const matchesAllAndTags = andTags.every((tag) => itemTags.includes(tag));
+        if (!matchesAllAndTags) {
+          shouldShow = false;
+        }
+      }
+
+      if (shouldShow) {
         item.classList.remove("filtered-out");
       } else {
         item.classList.add("filtered-out");
@@ -276,9 +372,16 @@
    */
   function clearFilters() {
     selectedTags.clear();
+    tagModes.clear();
     const checkboxes = tagList.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
+    });
+    const modeToggles = tagList.querySelectorAll('.tag-mode-toggle');
+    modeToggles.forEach((toggle) => {
+      toggle.style.display = "none";
+      toggle.textContent = "OR";
+      toggle.classList.remove("and-mode", "not-mode");
     });
     applyFilters();
   }
