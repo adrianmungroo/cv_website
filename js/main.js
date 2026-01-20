@@ -96,12 +96,15 @@
       // Switch to the correct tab
       switchToTab(parentTab.id);
 
-      // Wait a moment for the tab to become visible, then scroll
+      // Wait a moment for the tab to become visible, then scroll and expand
       setTimeout(() => {
         targetElement.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
+        
+        // Expand the "More info" section if it exists and is collapsed
+        expandDetailsSection(targetElement);
       }, 50);
     });
 
@@ -122,12 +125,15 @@
       // Switch to the correct tab
       switchToTab(parentTab.id);
 
-      // Wait a moment for the tab to become visible, then scroll
+      // Wait a moment for the tab to become visible, then scroll and expand
       setTimeout(() => {
         targetElement.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
+        
+        // Expand the "More info" section if it exists and is collapsed
+        expandDetailsSection(targetElement);
       }, 100);
     }
 
@@ -138,6 +144,24 @@
 
     // Handle hash changes
     window.addEventListener("hashchange", handleHash);
+  }
+
+  /**
+   * Expand the details section of a target element if it's collapsed
+   */
+  function expandDetailsSection(targetElement) {
+    // Find the toggle button within the target element or its parent item
+    const itemElement = targetElement.closest(".item, .timeline-item") || targetElement;
+    const toggleButton = itemElement.querySelector(".toggle-btn");
+    
+    if (!toggleButton) return;
+    
+    // Check if the details section is currently hidden
+    const detailsSection = toggleButton.nextElementSibling;
+    if (detailsSection && detailsSection.style.display === "none") {
+      // Click the button to expand it
+      toggleButton.click();
+    }
   }
 
   /**
