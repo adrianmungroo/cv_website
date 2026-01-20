@@ -357,6 +357,9 @@
                   of Georgia Tech's campus using WiFi access point log data.
                 </li>
                 <li>
+                  Created a <a href="#campus-occupancy">campus occupancy map</a>.
+                </li>
+                <li>
                   Created a
                   <a href="#canopy-height">canopy height map</a>
                   of Georgia Tech's campus using LiDAR and NDVI data.
@@ -733,6 +736,39 @@
           <section id="projects" class="tab-content">
             <h2 class="section-title">Projects</h2>
 
+        <div class="item" id="campus-occupancy">
+          <div class="sub">Using Georgia Tech's WiFi data for spatio-temporal building occupancy</div>
+          <h3><a href="https://campus-wifi-vue-app.netlify.app/" target="_blank" rel="noopener noreferrer">Campus Occupancy Map</a></h3>
+          <div class="sub">Aug 2025 - Dec 2025 • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Sourced, cleaned and categorized Georgia Tech building GIS data in ArcGIS Pro.
+              </li>
+              <li>
+                Associated WiFi access point log data with building GIS data.
+              </li>
+              <li>
+                Deployed a Vue.js web application to visualize the campus occupancy map.
+              </li>
+              <li>
+                In process of connecting the occupancy mapping to real time WiFi access point log data.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">GIS</span>
+              <span class="tag">Python</span>
+              <span class="tag">GeoPandas</span>  
+              <span class="tag">Vue.js</span>
+              <span class="tag">Netlify</span>
+              <span class="tag">ArcGIS Pro</span>
+            </div>
+          </div>
+        </div>
+
         <div class="item" id="movement-model">
           <h3>
             <a
@@ -746,7 +782,7 @@
             Using Georgia Tech's WiFi data to make spatio-temporal movement
             models
           </div>
-          <div class="sub">2025 • Atlanta, GA</div>
+          <div class="sub">Aug 2025 - Dec 2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
             More info ▼
           </button>
