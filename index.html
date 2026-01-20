@@ -315,16 +315,23 @@
           My personal favorite projects include...
         </h3>
         <ul class="focus-list">
-          <li>Georgia Power Outage spatio-temporal analysis</li>
-          <li>Georgia Tech Campus network movement model and analysis</li>
           <li>
-            Using Microsoft Building Footprints and Fulton County parcels to map
-            solar energy potential
+            <a href="#power-outage">Georgia Power Outage spatio-temporal analysis</a>
           </li>
-          <li>Using LiDAR and NDVI to map urban canopy heights</li>
           <li>
-            Using Fulton County parcel data to rank reusability of vacant
-            parcels in Atlanta
+            <a href="#movement-model">Georgia Tech Campus network movement model and analysis</a>
+          </li>
+          <li>
+            Using Microsoft Building Footprints and Fulton County parcels to 
+            <a href="#energyshed">map solar energy potential</a>
+          </li>
+          <li>
+            Using LiDAR and NDVI to 
+            <a href="#canopy-height">map urban canopy heights</a>
+          </li>
+          <li>
+            Using Fulton County parcel data to 
+            <a href="#vacant-parcels">rank reusability of vacant parcels in Atlanta</a>
           </li>
         </ul>
           </section>
@@ -430,7 +437,7 @@
             </div>
           </div>
 
-          <div class="timeline-item">
+          <div class="timeline-item" id="energyshed">
             <h3>Graduate Researcher - Urban Energy Systems</h3>
             <div class="sub">
               DoE FOA Georgia EnergyShed (DE-FOA-0002565, #2565-1535)
@@ -442,7 +449,7 @@
             <div class="details" style="display: none">
               <ul>
                 <li>
-                  Created <a href="#projects">CAKE</a> to serve as the data
+                  Created <a href="#cake">CAKE</a> to serve as the data
                   processing and visualization backbone for the project's
                   spatial analytics.
                 </li>
@@ -626,7 +633,7 @@
           </div>
         </div>
 
-        <div class="item">
+        <div class="item" id="power-outage">
           <h3>Georgia Power Outage Spatio-temporal Analysis</h3>
           <div class="sub">2024-2025 • Atlanta, GA</div>
           <button class="toggle-btn" onclick="toggleDetails(this)">
@@ -639,7 +646,7 @@
               </li>
               <li>Calculated outage duration for each outage event.</li>
               <li>
-                Used <a href="#projects">CAKE</a> to bin the outages into
+                Used <a href="#cake">CAKE</a> to bin the outages into
                 hexagon areas roughly the size of a neighborhood, maintaining
                 the ability to track local outages over time per hexagon.
               </li>
@@ -678,7 +685,7 @@
             <ul>
               <li>
                 Collected LIDAR and Digital Elevation Model (DEM) data for
-                Georgia, incorporating it into <a href="#projects">CAKE</a>.
+                Georgia, incorporating it into <a href="#cake">CAKE</a>.
               </li>
               <li>
                 Performed spatial raster calculations to create a Digital
@@ -694,7 +701,7 @@
           </div>
         </div>
 
-        <div class="item">
+        <div class="item" id="vacant-parcels">
           <h3>
             Ranking Reusability of Vacant Parcels in Fulton County, Atlanta
           </h3>
@@ -793,7 +800,7 @@
           </div>
         </div>
 
-        <div class="item">
+        <div class="item" id="cake">
           <h3>CAKE — Consolidated Area Knowledge Extractor</h3>
           <div class="sub">
             Open-source geospatial toolkit for homogenizing, interpolating, and
