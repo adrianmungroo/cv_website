@@ -358,6 +358,9 @@
                   Created a <a href="#campus-occupancy">campus occupancy map</a>.
                 </li>
                 <li>
+                  Currently developing a <a href="#campus-kw-forecast">predictive model for campus-wide total electrical demand (kW)</a> using historical load data, wet-bulb temperature, and occupancy.
+                </li>
+                <li>
                   Created a
                   <a href="#canopy-height">canopy height map</a>
                   of Georgia Tech's campus using LiDAR and NDVI data.
@@ -605,142 +608,174 @@
           <section id="research" class="tab-content">
             <h2 class="section-title">Independent Research & Development</h2>
 
-        <div class="item">
-          <h3>
-            Ranking Site Suitability for Data Centers in Fulton County, Atlanta
-          </h3>
-          <div class="sub">Jan 2025 - Feb 2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Used Fulton County parcel data, along with many other external
-                datasets such as Microsoft Building Footprint data, electrical
-                grid data, socioeconomic data, climate and earthquake data to
-                rank the site suitability for data centers in Fulton County,
-                Atlanta.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">GIS</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">H3</span>
-              <span class="tag">xarray</span>
+            <div class="item" id="power-outage">
+              <h3>Georgia Power Outage Spatio-temporal Analysis</h3>
+              <div class="sub">Nov 2024 - Present • Atlanta, GA</div>
+              <button class="toggle-btn" onclick="toggleDetails(this)">
+                More info ▼
+              </button>
+              <div class="details" style="display: none">
+                <ul>
+                  <li>
+                    Collected power outage data every 15 minutes from November 2024.
+                  </li>
+                  <li>Calculated outage duration for each outage event.</li>
+                  <li>
+                    Used <a href="#cake">CAKE</a> to bin the outages into
+                    hexagon areas roughly the size of a neighborhood, maintaining
+                    the ability to track local outages over time per hexagon.
+                  </li>
+                  <li>
+                    Incorporated many external datasets such as socioeconomic data,
+                    weather data, and building data to facilitate comprehensive
+                    analysis.
+                  </li>
+                  <li>
+                    Performed statistical analysis to identify patterns and trends
+                    in the outages, identifying if power outages correlate with
+                    socioeconomic factors, weather patterns, or building
+                    characteristics - and how these correlations change over space.
+                  </li>
+                  <li>
+                    Performed time series analysis to identify if outages occur
+                    sooner or later in the particular neighborhoods.
+                  </li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">GIS</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">H3</span>
+                  <span class="tag">xarray</span>
+                  <span class="tag">ArcGIS Pro</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        
+            <div class="item">
+              <h3>
+                Ranking Site Suitability for Data Centers in Fulton County, Atlanta
+              </h3>
+              <div class="sub">Jan 2025 - Feb 2025 • Atlanta, GA</div>
+              <button class="toggle-btn" onclick="toggleDetails(this)">
+                More info ▼
+              </button>
+              <div class="details" style="display: none">
+                <ul>
+                  <li>
+                    Used Fulton County parcel data, along with many other external
+                    datasets such as Microsoft Building Footprint data, electrical
+                    grid data, socioeconomic data, climate and earthquake data to
+                    rank the site suitability for data centers in Fulton County,
+                    Atlanta.
+                  </li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">GIS</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">H3</span>
+                  <span class="tag">xarray</span>
+                </div>
+              </div>
+            </div>
 
-        <div class="item" id="power-outage">
-          <h3>Georgia Power Outage Spatio-temporal Analysis</h3>
-          <div class="sub">2024-2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Collected power outage data every 15 minutes from November 2024.
-              </li>
-              <li>Calculated outage duration for each outage event.</li>
-              <li>
-                Used <a href="#cake">CAKE</a> to bin the outages into
-                hexagon areas roughly the size of a neighborhood, maintaining
-                the ability to track local outages over time per hexagon.
-              </li>
-              <li>
-                Incorporated many external datasets such as socioeconomic data,
-                weather data, and building data to facilitate comprehensive
-                analysis.
-              </li>
-              <li>
-                Performed statistical analysis to identify patterns and trends
-                in the outages, identifying if power outages correlate with
-                socioeconomic factors, weather patterns, or building
-                characteristics - and how these correlations change over space.
-              </li>
-              <li>
-                Performed time series analysis to identify if outages occur
-                sooner or later in the particular neighborhoods.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">GIS</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">H3</span>
-              <span class="tag">xarray</span>
-              <span class="tag">ArcGIS Pro</span>
+            <div class="item">
+              <h3>Georgia Digital Surface Model (DSM) Generation</h3>
+              <div class="sub">Jan 2025 - Aug 2025 • Atlanta, GA</div>
+              <button class="toggle-btn" onclick="toggleDetails(this)">
+                More info ▼
+              </button>
+              <div class="details" style="display: none">
+                <ul>
+                  <li>
+                    Collected LIDAR and Digital Elevation Model (DEM) data for
+                    Georgia, incorporating it into <a href="#cake">CAKE</a>.
+                  </li>
+                  <li>
+                    Performed spatial raster calculations to create a Digital
+                    Surface Model (DSM) for Georgia.
+                  </li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">GIS</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">H3</span>
+                  <span class="tag">xarray</span>
+                  <span class="tag">ArcGIS Pro</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="item">
-          <h3>Georgia Digital Surface Model (DSM) Generation</h3>
-          <div class="sub">Jan 2025 - Aug 2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Collected LIDAR and Digital Elevation Model (DEM) data for
-                Georgia, incorporating it into <a href="#cake">CAKE</a>.
-              </li>
-              <li>
-                Performed spatial raster calculations to create a Digital
-                Surface Model (DSM) for Georgia.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">GIS</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">H3</span>
-              <span class="tag">xarray</span>
-              <span class="tag">ArcGIS Pro</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" id="vacant-parcels">
-          <h3>
-            Ranking Reusability of Vacant Parcels in Fulton County, Atlanta
-          </h3>
-          <div class="sub">Jun 2024 - Aug 2024 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Used Fulton County parcel data, along with many other external
-                datasets such as Microsoft Building Footprint data and
-                transportation infrastructure data to rank the reusability of
-                vacant parcels in Atlanta for three reuse scenarios:
-                residential, commercial, and industrial.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">GIS</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">ArcGIS Pro</span>
-              <span class="tag">H3</span>
-            </div>
-          </div>
+            <div class="item" id="vacant-parcels">
+              <h3>
+                Ranking Reusability of Vacant Parcels in Fulton County, Atlanta
+              </h3>
+              <div class="sub">Jun 2024 - Aug 2024 • Atlanta, GA</div>
+              <button class="toggle-btn" onclick="toggleDetails(this)">
+                More info ▼
+              </button>
+              <div class="details" style="display: none">
+                <ul>
+                  <li>
+                    Used Fulton County parcel data, along with many other external
+                    datasets such as Microsoft Building Footprint data and
+                    transportation infrastructure data to rank the reusability of
+                    vacant parcels in Atlanta for three reuse scenarios:
+                    residential, commercial, and industrial.
+                  </li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">GIS</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">ArcGIS Pro</span>
+                  <span class="tag">H3</span>
+                </div>
+              </div>
             </div>
           </section>
 
           <!-- Projects Tab -->
           <section id="projects" class="tab-content">
             <h2 class="section-title">Projects</h2>
+
+        <div class="item" id="campus-kw-forecast">
+          <h3>Campus Electrical Demand Forecasting (kW)</h3>
+          <div class="sub">
+            Predicting campus-wide total kW demand using historical load, wet-bulb temperature, and occupancy
+          </div>
+          <div class="sub">Spring 2026 – Present • Atlanta, GA</div>
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            More info ▼
+          </button>
+          <div class="details" style="display: none">
+            <ul>
+              <li>
+                Developing a forecasting pipeline to predict total campus electrical demand (kW) from historical utility data.
+              </li>
+              <li>
+                Uses weather features (wet-bulb temperature) and occupancy-derived signals as model inputs.
+              </li>
+              <li>
+                The goal is to improve campus energy planning via short-term demand estimates.
+              </li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Time Series</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Energy Analytics</span>
+              <span class="tag">Weather</span>
+            </div>
+          </div>
+        </div>
+        
 
         <div class="item" id="campus-occupancy">
           <h3><a href="https://campus-wifi-vue-app.netlify.app/" target="_blank" rel="noopener noreferrer">Campus Occupancy Map</a></h3>
