@@ -50,6 +50,31 @@
   --shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
+/* Dark mode adjustments for clear button */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-mode) .clear-filters-btn {
+    background: #fb7185;
+    border-color: #fb7185;
+    color: white;
+  }
+
+  :root:not(.light-mode) .clear-filters-btn:hover {
+    background: #f87171;
+    border-color: #f87171;
+  }
+}
+
+:root.dark-mode .clear-filters-btn {
+  background: #fb7185;
+  border-color: #fb7185;
+  color: white;
+}
+
+:root.dark-mode .clear-filters-btn:hover {
+  background: #f87171;
+  border-color: #f87171;
+}
+
 /* ---------- Base Styles ---------- */
 * {
   box-sizing: border-box;
@@ -986,23 +1011,43 @@ section:hover {
   flex-shrink: 0;
 }
 
-.clear-filters-btn {
+.save-filters-btn {
   padding: 12px 20px;
-  background: color-mix(in oklab, var(--accent), transparent 85%);
-  border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
+  background: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
-  color: var(--accent);
+  color: white;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
   margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.save-filters-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.clear-filters-btn {
+  padding: 12px 20px;
+  background: #f87171;
+  border: 1px solid #f87171;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
 
 .clear-filters-btn:hover {
-  background: color-mix(in oklab, var(--accent), transparent 75%);
-  border-color: var(--accent);
+  background: #ef4444;
+  border-color: #ef4444;
   transform: translateY(-1px);
 }
 

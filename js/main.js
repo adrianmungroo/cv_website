@@ -201,6 +201,7 @@
     const filterToggleBtn = document.getElementById("filter-toggle-btn");
     const closeFilterBtn = document.getElementById("close-filter-btn");
     const clearFiltersBtn = document.getElementById("clear-filters-btn");
+    const saveFiltersBtn = document.getElementById("save-filters-btn");
 
     if (!tagFilterPanel || !tagList) return;
 
@@ -214,6 +215,7 @@
     filterToggleBtn?.addEventListener("click", toggleFilterPanel);
     closeFilterBtn?.addEventListener("click", closeFilterPanel);
     clearFiltersBtn?.addEventListener("click", clearFilters);
+    saveFiltersBtn?.addEventListener("click", closeFilterPanel);
     tagSearch?.addEventListener("input", filterTagList);
 
     // Close panel when clicking overlay
