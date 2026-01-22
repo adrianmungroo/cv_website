@@ -130,8 +130,9 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 128px);
-  margin: 64px auto;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
 }
 
 .wrap.wide-layout {
