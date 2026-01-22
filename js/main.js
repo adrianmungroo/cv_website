@@ -395,6 +395,13 @@
     });
 
     items.forEach((item) => {
+      // Education items are immune from filtering - always show them
+      const educationSection = document.getElementById("education");
+      if (educationSection && educationSection.contains(item)) {
+        item.classList.remove("filtered-out");
+        return;
+      }
+
       const itemTags = Array.from(item.querySelectorAll(".tag")).map((tag) =>
         tag.textContent.trim()
       );
