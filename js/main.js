@@ -23,6 +23,7 @@
     initWidthToggle();
     initThemeToggle();
     initHashNavigation();
+    initSeeCVToggle();
   }
 
   /**
@@ -530,6 +531,58 @@
 
       // Save preference to localStorage
       localStorage.setItem("layoutWidth", isWide ? "wide" : "narrow");
+    });
+  }
+
+  /**
+   * Initialize "See CV" button to toggle between slimmed-down and full CV views
+   */
+  function initSeeCVToggle() {
+    const seeCVBtn = document.getElementById("see-cv-btn");
+    const downloadCVBtn = document.querySelector(".download-cv-btn");
+    const tabContainer = document.querySelector(".tab-container");
+    const wrap = document.querySelector(".wrap");
+    const filterToggleBtn = document.getElementById("filter-toggle-btn");
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const widthToggleBtn = document.getElementById("width-toggle-btn");
+    const footer = document.querySelector("footer");
+
+    if (!seeCVBtn || !tabContainer || !wrap) return;
+
+    seeCVBtn.addEventListener("click", () => {
+      // Show the full CV content
+      tabContainer.classList.remove("cv-hidden");
+      wrap.classList.remove("cv-hidden");
+      
+      // Hide "See CV" button and show "Download CV" button
+      seeCVBtn.classList.add("hidden");
+      if (downloadCVBtn) {
+        downloadCVBtn.classList.remove("hidden");
+      }
+
+      // Show control buttons (filter, theme, width toggles)
+      if (filterToggleBtn) {
+        filterToggleBtn.classList.remove("hidden");
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.classList.remove("hidden");
+      }
+      if (widthToggleBtn) {
+        widthToggleBtn.classList.remove("hidden");
+      }
+
+      // Show footer
+      if (footer) {
+        footer.classList.remove("hidden");
+      }
+
+      // Smooth scroll to the CV content
+      setTimeout(() => {
+        tabContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
     });
   }
 
