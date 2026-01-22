@@ -1059,7 +1059,7 @@ section:hover {
   right: 32px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   z-index: 999;
 }
 
@@ -1071,7 +1071,7 @@ section:hover {
 .filter-toggle-btn,
 .theme-toggle-btn,
 .width-toggle-btn {
-  padding: 12px;
+  padding: 14px;
   background: var(--card);
   color: var(--accent);
   border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
@@ -1085,8 +1085,8 @@ section:hover {
   align-items: center;
   justify-content: center;
   transition: var(--transition-fast);
-  width: 44px;
-  height: 44px;
+  width: 53px;
+  height: 53px;
 }
 
 .filter-toggle-btn span,
@@ -1104,7 +1104,7 @@ section:hover {
 .filter-toggle-btn:hover,
 .theme-toggle-btn:hover,
 .width-toggle-btn:hover {
-  background: color-mix(in oklab, var(--accent), transparent 92%);
+  background: color-mix(in oklab, var(--card), var(--accent) 8%);
   border-color: var(--accent);
   transform: translateY(-1px);
   box-shadow: var(--shadow-hover);
@@ -1119,8 +1119,8 @@ section:hover {
 .filter-toggle-btn svg,
 .theme-toggle-btn svg,
 .width-toggle-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
@@ -1297,23 +1297,23 @@ footer.hidden {
   .control-buttons {
     bottom: 20px;
     right: 20px;
-    gap: 10px;
+    gap: 12px;
   }
 
   .filter-toggle-btn,
   .theme-toggle-btn,
   .width-toggle-btn {
-    padding: 10px;
+    padding: 12px;
     font-size: 12px;
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
   }
 
   .filter-toggle-btn svg,
   .theme-toggle-btn svg,
   .width-toggle-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 }
 
