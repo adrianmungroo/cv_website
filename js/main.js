@@ -542,9 +542,7 @@
     const downloadCVBtn = document.querySelector(".download-cv-btn");
     const tabContainer = document.querySelector(".tab-container");
     const wrap = document.querySelector(".wrap");
-    const filterToggleBtn = document.getElementById("filter-toggle-btn");
-    const themeToggleBtn = document.getElementById("theme-toggle-btn");
-    const widthToggleBtn = document.getElementById("width-toggle-btn");
+    const controlButtons = document.querySelector(".control-buttons");
     const footer = document.querySelector("footer");
 
     if (!seeCVBtn || !tabContainer || !wrap) return;
@@ -560,15 +558,9 @@
         downloadCVBtn.classList.remove("hidden");
       }
 
-      // Show control buttons (filter, theme, width toggles)
-      if (filterToggleBtn) {
-        filterToggleBtn.classList.remove("hidden");
-      }
-      if (themeToggleBtn) {
-        themeToggleBtn.classList.remove("hidden");
-      }
-      if (widthToggleBtn) {
-        widthToggleBtn.classList.remove("hidden");
+      // Show control buttons container
+      if (controlButtons) {
+        controlButtons.classList.remove("hidden");
       }
 
       // Show footer
