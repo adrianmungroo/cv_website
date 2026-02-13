@@ -14,8 +14,8 @@
   --ring: color-mix(in oklab, var(--accent), white 75%);
   --maxw: 900px;
   --maxw-wide: 1400px;
-  --radius: 16px;
-  --radius-sm: 12px;
+  --radius: 4px;
+  --radius-sm: 2px;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
   --shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.06), 0 16px 32px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -166,8 +166,7 @@ a:hover {
 }
 
 .general-content:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--accent), transparent 70%);
 }
 
 .avatar {
@@ -186,8 +185,7 @@ a:hover {
 }
 
 .avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent);
 }
 
 h1 {
@@ -232,7 +230,6 @@ h1 {
 .chip:hover {
   background: color-mix(in oklab, var(--card), var(--accent) 15%);
   border-color: var(--accent);
-  transform: translateY(-1px);
 }
 
 .chip a {
@@ -263,8 +260,6 @@ h1 {
     color-mix(in oklab, var(--accent), transparent 75%),
     color-mix(in oklab, var(--accent), transparent 65%)
   );
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px color-mix(in oklab, var(--accent), transparent 60%);
 }
 
 /* See CV button styling */
@@ -294,8 +289,6 @@ h1 {
     color-mix(in oklab, var(--accent), transparent 75%),
     color-mix(in oklab, var(--accent), transparent 65%)
   );
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px color-mix(in oklab, var(--accent), transparent 60%);
 }
 
 .see-cv-btn.hidden {
@@ -404,7 +397,6 @@ section {
 }
 
 section:hover {
-  box-shadow: var(--shadow-hover);
   border-color: color-mix(in oklab, var(--accent), transparent 70%);
 }
 
@@ -460,11 +452,6 @@ section:hover {
 .item:first-child {
   border-top: 0;
   padding-top: 0;
-}
-
-.item:hover {
-  padding-left: 8px;
-  border-left: 3px solid var(--accent);
 }
 
 .item h3 {
@@ -553,8 +540,6 @@ section:hover {
 .tag:hover {
   background: color-mix(in oklab, var(--accent), transparent 75%);
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ---------- Timeline Components ---------- */
@@ -598,18 +583,8 @@ section:hover {
   transition: var(--transition-fast);
 }
 
-.timeline-item:hover::before {
-  transform: scale(1.3);
-  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent), transparent 70%);
-}
-
 .timeline-item:first-child {
   padding-top: 0;
-}
-
-.timeline-item:hover {
-  padding-left: 20px;
-  border-left: none;
 }
 
 .timeline-item h3 {
@@ -654,8 +629,6 @@ section:hover {
 .skill-category:hover {
   border-color: var(--accent);
   background: color-mix(in oklab, var(--card), var(--accent) 6%);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
@@ -702,8 +675,6 @@ section:hover {
 
 .stat-card:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .stat-value {
@@ -754,7 +725,6 @@ section:hover {
 .toggle-btn:hover {
   background: color-mix(in oklab, var(--accent), transparent 75%);
   border-color: var(--accent);
-  transform: translateY(-1px);
 }
 
 .details {
@@ -976,7 +946,6 @@ section:hover {
 
 .tag-mode-toggle:hover {
   background: color-mix(in oklab, var(--accent), transparent 75%);
-  transform: scale(1.05);
 }
 
 .tag-mode-toggle.must-mode {
@@ -1030,7 +999,6 @@ section:hover {
 .save-filters-btn:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-  transform: translateY(-1px);
 }
 
 .clear-filters-btn {
@@ -1049,7 +1017,6 @@ section:hover {
 .clear-filters-btn:hover {
   background: #ef4444;
   border-color: #ef4444;
-  transform: translateY(-1px);
 }
 
 /* Floating Control Buttons Container */
@@ -1075,7 +1042,7 @@ section:hover {
   background: var(--card);
   color: var(--accent);
   border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
-  border-radius: 12px;
+  border-radius: 2px;
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -1106,14 +1073,12 @@ section:hover {
 .width-toggle-btn:hover {
   background: color-mix(in oklab, var(--card), var(--accent) 8%);
   border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-hover);
 }
 
 .filter-toggle-btn:active,
 .theme-toggle-btn:active,
 .width-toggle-btn:active {
-  transform: translateY(0);
+  opacity: 0.8;
 }
 
 .filter-toggle-btn svg,
@@ -1219,10 +1184,6 @@ footer.hidden {
 
   section {
     padding: 24px;
-  }
-
-  .item:hover {
-    padding-left: 4px;
   }
 
   /* Tab layout responsive */
@@ -1336,7 +1297,6 @@ footer.hidden {
 
   header:hover,
   section:hover {
-    transform: none;
     box-shadow: none;
   }
 
@@ -1352,16 +1312,6 @@ footer.hidden {
   a {
     color: #000;
     text-decoration: none;
-  }
-
-  .avatar:hover {
-    transform: none;
-  }
-
-  .item:hover,
-  .timeline-item:hover {
-    padding-left: 0;
-    border-left: none;
   }
 
   .timeline::before {
@@ -1387,7 +1337,6 @@ footer.hidden {
   .stat-card:hover,
   .skill-category:hover,
   .tag:hover {
-    transform: none;
     box-shadow: none;
   }
 }
