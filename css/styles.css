@@ -82,6 +82,10 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;          /* Firefox */
+}
+::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Edge */
 }
 
 html,
