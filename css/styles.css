@@ -658,10 +658,6 @@ section:hover {
   transition: var(--transition-fast);
 }
 
-.stat-card:hover {
-  border-color: var(--accent);
-}
-
 .stat-value {
   font-size: 32px;
   font-weight: 800;
@@ -1313,7 +1309,6 @@ footer.hidden {
     box-shadow: none;
   }
 
-  .stat-card:hover,
   .skill-category:hover,
   .tag:hover {
     box-shadow: none;
