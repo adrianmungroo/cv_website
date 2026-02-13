@@ -159,7 +159,7 @@ a:hover {
   display: grid;
   gap: 24px;
   align-items: center;
-  grid-template-columns: 112px 1fr;
+  grid-template-columns: 1fr;
   background: var(--card);
   border-radius: var(--radius);
   padding: 32px;
@@ -171,25 +171,6 @@ a:hover {
 
 .general-content:hover {
   border-color: color-mix(in oklab, var(--accent), transparent 70%);
-}
-
-.avatar {
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--ring));
-  display: grid;
-  place-items: center;
-  color: white;
-  font-weight: 700;
-  font-size: 48px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  border: 3px solid color-mix(in oklab, var(--card), var(--accent) 20%);
-}
-
-.avatar:hover {
-  border-color: var(--accent);
 }
 
 h1 {
@@ -1167,15 +1148,9 @@ footer.hidden {
   }
 
   .general-content {
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 1fr;
     padding: 24px;
     gap: 20px;
-  }
-
-  .avatar {
-    width: 80px;
-    height: 80px;
-    font-size: 36px;
   }
 
   h1 {
