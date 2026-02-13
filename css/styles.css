@@ -434,7 +434,8 @@ section:hover {
   transition: var(--transition-fast);
 }
 
-.item:first-child {
+.item:first-child,
+.section-title + .item {
   border-top: 0;
   padding-top: 0;
 }
