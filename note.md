@@ -1,2 +1,3 @@
 - add academic proposals
 - combined projects and research? they are vaguely separated
+- add resume (update resume)
