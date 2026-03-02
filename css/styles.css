@@ -675,6 +675,175 @@ section:hover {
   letter-spacing: 0.05em;
 }
 
+/* ---------- Project Tiles ---------- */
+.project-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.project-tile {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--fg), transparent 92%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-tile-img {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--card), var(--accent) 5%);
+}
+
+.project-tile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-tile-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-tile-body h3 {
+  margin: 0 0 8px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.3;
+}
+
+.project-tile-body h3 a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.project-tile-body h3 a:hover {
+  color: var(--accent-hover);
+}
+
+.project-tile-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+  flex: 1;
+}
+
+.project-tile-meta {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.project-tile .details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid color-mix(in oklab, var(--fg), transparent 92%);
+}
+
+.project-tile .details ul {
+  margin: 0 0 12px 20px;
+}
+
+/* ---------- Project Modal ---------- */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+
+.project-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.project-modal-content {
+  position: relative;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--fg), transparent 88%);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: color-mix(in oklab, var(--fg), transparent 90%);
+  color: var(--fg);
+  font-size: 24px;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal-body {
+  padding-right: 40px;
+}
+
+.project-modal-body img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.project-modal-body h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+}
+
+.project-modal-body .project-tile-desc {
+  margin: 0 0 8px 0;
+}
+
+.project-modal-body .project-tile-meta {
+  margin-bottom: 16px;
+}
+
+.project-modal-body .details {
+  margin-top: 0;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklab, var(--fg), transparent 92%);
+}
+
 /* ---------- Feature Cards ---------- */
 .featured {
   border-left: 4px solid var(--accent);
@@ -886,23 +1055,20 @@ section:hover {
   background: color-mix(in oklab, var(--card), var(--accent) 5%);
 }
 
-.tag-filter-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: var(--accent);
-  flex-shrink: 0;
-}
-
 .tag-filter-item label {
   flex: 1;
-  cursor: pointer;
+  cursor: inherit;
   font-size: 14px;
   color: var(--fg);
   user-select: none;
 }
 
-.tag-filter-item input[type="checkbox"]:checked + label {
+.tag-filter-item.active {
+  border-color: color-mix(in oklab, var(--accent), transparent 65%);
+  background: color-mix(in oklab, var(--card), var(--accent) 8%);
+}
+
+.tag-filter-item.active label {
   color: var(--accent);
   font-weight: 600;
 }
@@ -919,15 +1085,16 @@ section:hover {
   background: color-mix(in oklab, var(--accent), transparent 85%);
   color: var(--accent);
   border: 1px solid color-mix(in oklab, var(--accent), transparent 70%);
-  cursor: pointer;
   transition: var(--transition-fast);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   flex-shrink: 0;
 }
 
-.tag-mode-toggle:hover {
-  background: color-mix(in oklab, var(--accent), transparent 75%);
+.tag-mode-toggle.off-mode {
+  background: color-mix(in oklab, var(--fg), transparent 92%);
+  border-color: color-mix(in oklab, var(--fg), transparent 86%);
+  color: var(--muted);
 }
 
 .tag-mode-toggle.must-mode {
@@ -1095,7 +1262,8 @@ section:hover {
 
 /* Filtered out items */
 .item.filtered-out,
-.timeline-item.filtered-out {
+.timeline-item.filtered-out,
+.project-tile.filtered-out {
   display: none;
 }
 
@@ -1209,6 +1377,12 @@ footer.hidden {
   .skill-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  /* Project tiles responsive */
+  .project-tiles {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   /* Stats responsive */

@@ -62,6 +62,15 @@
   </head>
 
   <body>
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="project-modal" aria-hidden="true">
+      <div class="project-modal-backdrop" onclick="closeProjectModal()"></div>
+      <div class="project-modal-content">
+        <button class="project-modal-close" onclick="closeProjectModal()" aria-label="Close">×</button>
+        <div class="project-modal-body"></div>
+      </div>
+    </div>
+
     <!-- Tag Filter Overlay -->
     <div id="tag-filter-overlay" class="tag-filter-overlay"></div>
 
@@ -82,7 +91,7 @@
           <input type="text" id="tag-search" placeholder="Search tags..." />
         </div>
         <div class="filter-mode-info">
-          <strong>Three Filter Buckets:</strong> Click mode buttons to cycle.
+          <strong>Three Filter Buckets:</strong> Click any tag row to cycle (OFF → ANY → MUST → NONE).
           <br />
           <span class="mode-badge any-mode">ANY</span> = match at least one
           <span class="mode-badge must-mode">MUST</span> = must have all
@@ -767,222 +776,167 @@
           <!-- Projects Tab -->
           <section id="projects" class="tab-content">
             <h2 class="section-title">Projects</h2>
-
-        <div class="item" id="campus-kw-forecast">
-          <h3>Campus Electrical Demand Forecasting (kW)</h3>
-          <div class="sub">
-            Predicting campus-wide total kW demand using historical load, wet-bulb temperature, and occupancy
-          </div>
-          <div class="sub">Spring 2026 – Present • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Developing a forecasting pipeline to predict total campus electrical demand (kW) from historical utility data.
-              </li>
-              <li>
-                Uses weather features (wet-bulb temperature) and occupancy-derived signals as model inputs.
-              </li>
-              <li>
-                The goal is to improve campus energy planning via short-term demand estimates.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Time Series</span>
-              <span class="tag">Forecasting</span>
-              <span class="tag">Energy Analytics</span>
-              <span class="tag">Weather</span>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="item" id="campus-occupancy">
-          <h3><a href="https://campus-wifi-vue-app.netlify.app/" target="_blank" rel="noopener noreferrer">Campus Occupancy Map</a></h3>
-          <div class="sub">Spatio-temporal building occupancy using GT WiFi data</div>
-          <div class="sub">Aug 2025 - Dec 2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Sourced, cleaned and categorized Georgia Tech building GIS data in ArcGIS Pro.
-              </li>
-              <li>
-                Associated WiFi access point log data with building GIS data.
-              </li>
-              <li>
-                Deployed a Vue.js web application to visualize the campus occupancy map.
-              </li>
-              <li>
-                In process of connecting the occupancy mapping to real time WiFi access point log data.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">GIS</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>  
-              <span class="tag">Vue.js</span>
-              <span class="tag">Netlify</span>
-              <span class="tag">ArcGIS Pro</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" id="movement-model">
-          <h3>
-            <a
-              href="https://movement-model.streamlit.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Campus-scale Movement Model</a
-            >
-          </h3>
-          <div class="sub">
-            Using GT WiFi data to power a campus-scale student walkway congestion model
-          </div>
-          <div class="sub">Aug 2025 - Dec 2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Manually created a node and edge network model for campus in
-                ArcGIS Pro, detailing every possible path of movement on campus.
-              </li>
-              <li>
-                Created data structure to store movement events from the raw
-                WiFi access point log data.
-              </li>
-              <li>
-                Created congestion time series for all sidewalks and walkways in
-                the campus using the movement events.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
-              <span class="tag">H3</span>
-              <span class="tag">xarray</span>
-              <span class="tag">Streamlit</span>
-              <span class="tag">ArcGIS Pro</span>
-              <span class="tag">Dijkstra's Algo</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" id="canopy-height">
-          <h3>Georgia Tech Tree Canopy Height Model</h3>
-          <div class="sub">Jun 2025 - Aug 2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Used Georgia Tech's DSM data along with NDVI (Normalized
-                Difference Vegetation Index) data to create a canopy height map
-                for Georgia Tech's campus.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">H3</span>
-              <span class="tag">xarray</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item" id="cake">
-          <h3>CAKE — Consolidated Area Knowledge Extractor</h3>
-          <div class="sub">
-            Open-source geospatial toolkit for homogenizing, interpolating, and
-            visualizing spatial data
-          </div>
-          <div class="sub">2024-2025 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Developed in-house at Georgia Tech, by Adrian Mungroo and
-                preceding researchers.
-              </li>
-              <li>
-                Deployment of CAKE to be leveraged in SEEA, City of Atlanta, and
-                NREL's Equitable Building Performance Standards FOA Award
-                project.
-              </li>
-              <li>
-                CAKE has already diagnosed spatial distribution issues within
-                ANL's POLARIS Atlanta model.
-              </li>
-              <li>
-                CAKE is the backbone of all spatial analyses at Georgia Tech's
-                Smart Campus team.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">H3</span>
-              <span class="tag">Geopandas</span>
-              <span class="tag">NumPy</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">xarray</span>
-              <span class="tag">Matplotlib</span>
-              <span class="tag">Scikit-learn</span>
-              <span class="tag">PostGIS</span>
-              <span class="tag">Git</span>
-              <span class="tag">ArcGIS Pro</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <h3>Designing a Special Operations Military Aircraft - Megabat</h3>
-          <div class="sub">
-            Final Year Design Project for Georgia Tech's Aerospace Engineering
-            Bachelor's Degree
-          </div>
-          <div class="sub">2019–2020 • Atlanta, GA</div>
-          <button class="toggle-btn" onclick="toggleDetails(this)">
-            More info ▼
-          </button>
-          <div class="details" style="display: none">
-            <ul>
-              <li>
-                Performed convergent iterative weight sizing to determine
-                subsystem weights.
-              </li>
-              <li>
-                Determined the propulsion requirements of the craft using
-                constraint sizing methods.
-              </li>
-              <li>
-                Converged to a feasible design by iterating interconnected
-                aircraft subsystems.
-              </li>
-              <li>
-                Approximated the procurement and operational cost and compared
-                its financial performance to similar aircraft.
-              </li>
-            </ul>
-            <div class="tags">
-              <span class="tag">MATLAB</span>
-              <span class="tag">Excel</span>
-              <span class="tag">Aerodynamics</span>
-              <span class="tag">Propulsion</span>
-              <span class="tag">Structural Analysis</span>
-              <span class="tag">Constraint Sizing</span>
-            </div>
-          </div>
+            <div class="project-tiles">
+              <article class="project-tile" id="campus-kw-forecast">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/electricity/400/250" alt="Campus Electrical Demand Forecasting" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3>Campus Electrical Demand Forecasting (kW)</h3>
+                  <p class="project-tile-desc">Predicting campus-wide total kW demand using historical load, wet-bulb temperature, and occupancy</p>
+                  <div class="project-tile-meta">Spring 2026 – Present • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Developing a forecasting pipeline to predict total campus electrical demand (kW) from historical utility data.</li>
+                      <li>Uses weather features (wet-bulb temperature) and occupancy-derived signals as model inputs.</li>
+                      <li>The goal is to improve campus energy planning via short-term demand estimates.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">Time Series</span>
+                      <span class="tag">Forecasting</span>
+                      <span class="tag">Energy Analytics</span>
+                      <span class="tag">Weather</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="project-tile" id="campus-occupancy">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/city/400/250" alt="Campus Occupancy Map" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3><a href="https://campus-wifi-vue-app.netlify.app/" target="_blank" rel="noopener noreferrer">Campus Occupancy Map</a></h3>
+                  <p class="project-tile-desc">Spatio-temporal building occupancy using GT WiFi data</p>
+                  <div class="project-tile-meta">Aug 2025 - Dec 2025 • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Sourced, cleaned and categorized Georgia Tech building GIS data in ArcGIS Pro.</li>
+                      <li>Associated WiFi access point log data with building GIS data.</li>
+                      <li>Deployed a Vue.js web application to visualize the campus occupancy map.</li>
+                      <li>In process of connecting the occupancy mapping to real time WiFi access point log data.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">GIS</span>
+                      <span class="tag">Python</span>
+                      <span class="tag">GeoPandas</span>
+                      <span class="tag">Vue.js</span>
+                      <span class="tag">Netlify</span>
+                      <span class="tag">ArcGIS Pro</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="project-tile" id="movement-model">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/movement-model/400/250" alt="Campus-scale Movement Model" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3><a href="https://movement-model.streamlit.app/" target="_blank" rel="noopener noreferrer">Campus-scale Movement Model</a></h3>
+                  <p class="project-tile-desc">Using GT WiFi data to power a campus-scale student walkway congestion model</p>
+                  <div class="project-tile-meta">Aug 2025 - Dec 2025 • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Manually created a node and edge network model for campus in ArcGIS Pro, detailing every possible path of movement on campus.</li>
+                      <li>Created data structure to store movement events from the raw WiFi access point log data.</li>
+                      <li>Created congestion time series for all sidewalks and walkways in the campus using the movement events.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">GeoPandas</span>
+                      <span class="tag">H3</span>
+                      <span class="tag">xarray</span>
+                      <span class="tag">Streamlit</span>
+                      <span class="tag">ArcGIS Pro</span>
+                      <span class="tag">Dijkstra's Algo</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="project-tile" id="canopy-height">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/canopy-height/400/250" alt="Georgia Tech Tree Canopy Height Model" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3>Georgia Tech Tree Canopy Height Model</h3>
+                  <p class="project-tile-desc">Canopy height map for Georgia Tech campus using DSM and NDVI data</p>
+                  <div class="project-tile-meta">Jun 2025 - Aug 2025 • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Used Georgia Tech's DSM data along with NDVI (Normalized Difference Vegetation Index) data to create a canopy height map for Georgia Tech's campus.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">Pandas</span>
+                      <span class="tag">H3</span>
+                      <span class="tag">xarray</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="project-tile" id="cake">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/cake-geospatial/400/250" alt="CAKE" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3>CAKE — Consolidated Area Knowledge Extractor</h3>
+                  <p class="project-tile-desc">Open-source geospatial toolkit for homogenizing, interpolating, and visualizing spatial data</p>
+                  <div class="project-tile-meta">2024-2025 • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Developed in-house at Georgia Tech, by Adrian Mungroo and preceding researchers.</li>
+                      <li>Deployment of CAKE to be leveraged in SEEA, City of Atlanta, and NREL's Equitable Building Performance Standards FOA Award project.</li>
+                      <li>CAKE has already diagnosed spatial distribution issues within ANL's POLARIS Atlanta model.</li>
+                      <li>CAKE is the backbone of all spatial analyses at Georgia Tech's Smart Campus team.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">Python</span>
+                      <span class="tag">H3</span>
+                      <span class="tag">Geopandas</span>
+                      <span class="tag">NumPy</span>
+                      <span class="tag">Pandas</span>
+                      <span class="tag">xarray</span>
+                      <span class="tag">Matplotlib</span>
+                      <span class="tag">Scikit-learn</span>
+                      <span class="tag">PostGIS</span>
+                      <span class="tag">Git</span>
+                      <span class="tag">ArcGIS Pro</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="project-tile">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/megabat/400/250" alt="Megabat Aircraft Design" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3>Designing a Special Operations Military Aircraft - Megabat</h3>
+                  <p class="project-tile-desc">Final Year Design Project for Georgia Tech's Aerospace Engineering Bachelor's Degree</p>
+                  <div class="project-tile-meta">2019–2020 • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>Performed convergent iterative weight sizing to determine subsystem weights.</li>
+                      <li>Determined the propulsion requirements of the craft using constraint sizing methods.</li>
+                      <li>Converged to a feasible design by iterating interconnected aircraft subsystems.</li>
+                      <li>Approximated the procurement and operational cost and compared its financial performance to similar aircraft.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">MATLAB</span>
+                      <span class="tag">Excel</span>
+                      <span class="tag">Aerodynamics</span>
+                      <span class="tag">Propulsion</span>
+                      <span class="tag">Structural Analysis</span>
+                      <span class="tag">Constraint Sizing</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
           </section>
 

@@ -6,12 +6,11 @@
 (function () {
   "use strict";
 
-  let selectedTags = new Set();
   let allTags = new Map();
   let tagFilterPanel = null;
   let tagList = null;
   let tagSearch = null;
-  let tagModes = new Map(); // Store whether each tag is in OR or AND mode
+  let tagModes = new Map(); // Store each tag mode: OFF, ANY, MUST, NONE
 
   /**
    * Initialize the application
@@ -24,6 +23,9 @@
     initThemeToggle();
     initHashNavigation();
     initSeeCVToggle();
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.getElementById("project-modal")?.classList.contains("open")) window.closeProjectModal();
+    });
   }
 
   /**
@@ -176,6 +178,37 @@
   }
 
   /**
+   * Open project detail modal (Projects section only)
+   */
+  window.openProjectModal = function (button) {
+    const tile = button.closest(".project-tile");
+    if (!tile) return;
+    const modal = document.getElementById("project-modal");
+    const body = modal?.querySelector(".project-modal-body");
+    if (!modal || !body) return;
+    const img = tile.querySelector(".project-tile-img img")?.cloneNode(true);
+    const title = tile.querySelector("h3")?.cloneNode(true);
+    const desc = tile.querySelector(".project-tile-desc")?.cloneNode(true);
+    const meta = tile.querySelector(".project-tile-meta")?.cloneNode(true);
+    const details = tile.querySelector(".details")?.cloneNode(true);
+    if (details) details.style.display = "block";
+    body.innerHTML = "";
+    if (img) body.appendChild(img);
+    [title, desc, meta, details].filter(Boolean).forEach((el) => body.appendChild(el));
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  window.closeProjectModal = function () {
+    const modal = document.getElementById("project-modal");
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  /**
    * Toggle publication details visibility
    */
   window.toggleDetails = function (button) {
@@ -228,7 +261,9 @@
    */
   function collectTags() {
     const tags = document.querySelectorAll(".tag");
-    const items = document.querySelectorAll(".item, .timeline-item");
+    const items = document.querySelectorAll(
+      ".item, .timeline-item, .project-tile"
+    );
 
     items.forEach((item) => {
       const itemTags = Array.from(item.querySelectorAll(".tag")).map((tag) =>
@@ -271,32 +306,32 @@
       filterItem.className = "tag-filter-item";
       filterItem.dataset.tag = tagText;
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.id = `tag-${tagText.replace(/\s+/g, "-").toLowerCase()}`;
-      checkbox.value = tagText;
-      checkbox.addEventListener("change", handleTagToggle);
-
       const label = document.createElement("label");
-      label.htmlFor = checkbox.id;
       label.textContent = tagText;
 
       const count = document.createElement("span");
       count.className = "tag-count";
       count.textContent = data.count;
 
-      // Add mode toggle button (ANY/MUST/NONE)
-      const modeToggle = document.createElement("button");
+      // Mode badge (OFF/ANY/MUST/NONE)
+      const modeToggle = document.createElement("span");
       modeToggle.className = "tag-mode-toggle";
-      modeToggle.textContent = "ANY";
-      modeToggle.title = "Click to cycle: ANY → MUST → NONE";
-      modeToggle.style.display = "none"; // Hidden by default
-      modeToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        toggleTagMode(tagText, modeToggle);
+      modeToggle.textContent = "OFF";
+      modeToggle.classList.add("off-mode");
+      modeToggle.title = "Click row to cycle: OFF → ANY → MUST → NONE";
+
+      tagModes.set(tagText, "OFF");
+      filterItem.setAttribute("role", "button");
+      filterItem.setAttribute("tabindex", "0");
+      filterItem.setAttribute("aria-label", `Toggle ${tagText} filter mode`);
+      filterItem.addEventListener("click", () => cycleTagMode(tagText, filterItem));
+      filterItem.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          cycleTagMode(tagText, filterItem);
+        }
       });
 
-      filterItem.appendChild(checkbox);
       filterItem.appendChild(label);
       filterItem.appendChild(modeToggle);
       filterItem.appendChild(count);
@@ -306,58 +341,66 @@
   }
 
   /**
-   * Handle tag checkbox toggle
+   * Get the next mode in cycle order
    */
-  function handleTagToggle(e) {
-    const tagText = e.target.value;
-    const filterItem = e.target.closest(".tag-filter-item");
-    const modeToggle = filterItem.querySelector(".tag-mode-toggle");
+  function getNextTagMode(currentMode) {
+    if (currentMode === "OFF") return "ANY";
+    if (currentMode === "ANY") return "MUST";
+    if (currentMode === "MUST") return "NONE";
+    return "OFF";
+  }
 
-    if (e.target.checked) {
-      selectedTags.add(tagText);
-      // Initialize as ANY mode by default
-      if (!tagModes.has(tagText)) {
-        tagModes.set(tagText, "ANY");
-      }
-      // Show the mode toggle button
-      modeToggle.style.display = "inline-flex";
-    } else {
-      selectedTags.delete(tagText);
-      tagModes.delete(tagText);
-      // Hide the mode toggle button
-      modeToggle.style.display = "none";
-    }
+  /**
+   * Toggle tag between OFF, ANY, MUST, and NONE modes
+   */
+  function cycleTagMode(tagText, filterItem) {
+    const currentMode = tagModes.get(tagText) || "OFF";
+    const newMode = getNextTagMode(currentMode);
 
+    tagModes.set(tagText, newMode);
+    updateTagModeUI(filterItem, newMode);
     applyFilters();
   }
 
   /**
-   * Toggle tag between ANY, MUST, and NONE modes
+   * Update row and mode badge visuals
    */
-  function toggleTagMode(tagText, button) {
-    const currentMode = tagModes.get(tagText) || "ANY";
-    let newMode;
-    
-    // Cycle through: ANY → MUST → NONE → ANY
-    if (currentMode === "ANY") {
-      newMode = "MUST";
-    } else if (currentMode === "MUST") {
-      newMode = "NONE";
-    } else {
-      newMode = "ANY";
+  function updateTagModeUI(filterItem, mode) {
+    const modeBadge = filterItem.querySelector(".tag-mode-toggle");
+    if (!modeBadge) return;
+
+    modeBadge.textContent = mode;
+    modeBadge.classList.remove("off-mode", "must-mode", "none-mode");
+    filterItem.classList.toggle("active", mode !== "OFF");
+
+    if (mode === "OFF") {
+      modeBadge.classList.add("off-mode");
+    } else if (mode === "MUST") {
+      modeBadge.classList.add("must-mode");
+    } else if (mode === "NONE") {
+      modeBadge.classList.add("none-mode");
     }
-    
-    tagModes.set(tagText, newMode);
-    
-    button.textContent = newMode;
-    button.classList.remove("must-mode", "none-mode");
-    if (newMode === "MUST") {
-      button.classList.add("must-mode");
-    } else if (newMode === "NONE") {
-      button.classList.add("none-mode");
-    }
-    
-    applyFilters();
+  }
+
+  /**
+   * Get currently active tags grouped by mode
+   */
+  function getActiveTagsByMode() {
+    const anyTags = [];
+    const mustTags = [];
+    const noneTags = [];
+
+    tagModes.forEach((mode, tag) => {
+      if (mode === "ANY") {
+        anyTags.push(tag);
+      } else if (mode === "MUST") {
+        mustTags.push(tag);
+      } else if (mode === "NONE") {
+        noneTags.push(tag);
+      }
+    });
+
+    return { anyTags, mustTags, noneTags };
   }
 
   /**
@@ -368,31 +411,20 @@
    * - NONE bucket: item must have ZERO of these tags
    */
   function applyFilters() {
-    const items = document.querySelectorAll(".item, .timeline-item");
+    const items = document.querySelectorAll(
+      ".item, .timeline-item, .project-tile"
+    );
+    const { anyTags, mustTags, noneTags } = getActiveTagsByMode();
+    const hasActiveFilters =
+      anyTags.length > 0 || mustTags.length > 0 || noneTags.length > 0;
 
-    if (selectedTags.size === 0) {
+    if (!hasActiveFilters) {
       // Show all items if no tags selected
       items.forEach((item) => {
         item.classList.remove("filtered-out");
       });
       return;
     }
-
-    // Separate selected tags into three buckets
-    const anyTags = [];    // ANY bucket - must have at least one
-    const mustTags = [];   // MUST bucket - must have all
-    const noneTags = [];   // NONE bucket - must have none
-    
-    selectedTags.forEach((tag) => {
-      const mode = tagModes.get(tag) || "ANY";
-      if (mode === "ANY") {
-        anyTags.push(tag);
-      } else if (mode === "MUST") {
-        mustTags.push(tag);
-      } else if (mode === "NONE") {
-        noneTags.push(tag);
-      }
-    });
 
     items.forEach((item) => {
       // Education items are immune from filtering - always show them
@@ -496,17 +528,11 @@
    * Clear all selected filters
    */
   function clearFilters() {
-    selectedTags.clear();
-    tagModes.clear();
-    const checkboxes = tagList.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-    const modeToggles = tagList.querySelectorAll('.tag-mode-toggle');
-    modeToggles.forEach((toggle) => {
-      toggle.style.display = "none";
-      toggle.textContent = "ANY";
-      toggle.classList.remove("must-mode", "none-mode");
+    const filterItems = tagList.querySelectorAll(".tag-filter-item");
+    filterItems.forEach((filterItem) => {
+      const tagText = filterItem.dataset.tag;
+      tagModes.set(tagText, "OFF");
+      updateTagModeUI(filterItem, "OFF");
     });
     applyFilters();
   }
