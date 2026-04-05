@@ -398,13 +398,9 @@
                   of Georgia Tech's campus using LiDAR and NDVI data.
                 </li>
                 <li>
-                  <a
-                    href="https://gt-workorders.netlify.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Campus Work order mapping and visualization</a
-                  >
-                  using Georgia Tech's work order data.
+                  <a href="#gt-workorders">Campus Work order mapping and visualization</a>
+                  using Georgia Tech's work order data
+                  (<a href="https://gt-workorders.netlify.app/" target="_blank" rel="noopener noreferrer">live app</a>).
                 </li>
                 <li>
                   <a
@@ -767,6 +763,30 @@
                   </div>
                 </div>
               </article>
+              <article class="project-tile" id="gt-workorders">
+                <div class="project-tile-img">
+                  <img src="https://picsum.photos/seed/gt-workorders/400/250" alt="GT Work Orders Dashboard" loading="lazy" />
+                </div>
+                <div class="project-tile-body">
+                  <h3><a href="https://gt-workorders.netlify.app/" target="_blank" rel="noopener noreferrer">GT Work Orders Dashboard</a></h3>
+                  <p class="project-tile-desc">Campus Work order mapping and visualization using Georgia Tech's work order data.</p>
+                  <div class="project-tile-meta">2022–Present • Atlanta, GA</div>
+                  <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
+                  <div class="details" style="display: none">
+                    <ul>
+                      <li>This tool spatio-temporally visualizes works orders for the entire Georgia Tech campus.</li>
+                      <li>This helps facilities help analyze specific building quirks and narrow down where recurring issues may be happening in terms of geography and time.</li>
+                    </ul>
+                    <div class="tags">
+                      <span class="tag">GIS</span>
+                      <span class="tag">Python</span>
+                      <span class="tag">Netlify</span>
+                      <span class="tag">Facilities</span>
+                      <span class="tag">Data Visualization</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
               <article class="project-tile" id="aims-voice-dictate">
                 <div class="project-tile-img">
                   <img src="images/aims-voice-work-orders.png" alt="Voice-to-AIMs work order pipeline" loading="lazy" />
@@ -778,6 +798,7 @@
                   <button class="toggle-btn" onclick="openProjectModal(this)">More info ▼</button>
                   <div class="details" style="display: none">
                     <ul>
+                      <li>This is a password-protected website for Georgia Tech's Facilities Department. Internal use only.</li>
                       <li>Replaces post-job manual typing with on-site voice capture so field staff spend less time on forms.</li>
                       <li>Forms are now correct and standardized to perform analytics on.</li>
                       <li>Audio is processed by Deepgram's speech-to-text API and passed to Gemini to extract structured JSON.</li>
