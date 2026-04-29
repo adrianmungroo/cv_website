@@ -587,7 +587,7 @@
       tabContainer.classList.remove("cv-hidden");
       wrap.classList.remove("cv-hidden");
       
-      // Hide "See CV" button and show "Download CV" button
+      // Hide "See CV" button and show "Download Resume" button
       seeCVBtn.classList.add("hidden");
       if (downloadCVBtn) {
         downloadCVBtn.classList.remove("hidden");
