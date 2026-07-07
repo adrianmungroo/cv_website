@@ -128,17 +128,6 @@ a:hover {
   transition: max-width 0.3s ease;
 }
 
-/* Center content when CV is hidden (slimmed-down view) */
-.wrap.cv-hidden {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 24px;
-}
-
 .wrap.wide-layout {
   max-width: var(--maxw-wide);
 }
@@ -247,43 +236,6 @@ h1 {
   );
 }
 
-/* See CV button styling */
-.see-cv-btn {
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--accent), transparent 85%),
-    color-mix(in oklab, var(--accent), transparent 75%)
-  );
-  border-color: var(--accent);
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  color: var(--accent);
-  cursor: pointer;
-  border: 1px solid var(--accent);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  transition: var(--transition-fast);
-  text-decoration: none;
-}
-
-.see-cv-btn:hover {
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--accent), transparent 75%),
-    color-mix(in oklab, var(--accent), transparent 65%)
-  );
-}
-
-.see-cv-btn.hidden {
-  display: none;
-}
-
-.download-cv-btn.hidden {
-  display: none;
-}
-
 /* ---------- Tab Layout ---------- */
 .tab-container {
   display: grid;
@@ -291,11 +243,6 @@ h1 {
   gap: 24px;
   align-items: start;
   transition: grid-template-columns 0.3s ease;
-}
-
-/* Hide CV content initially (slimmed-down view) */
-.tab-container.cv-hidden {
-  display: none;
 }
 
 .wide-layout .tab-container {
@@ -1179,10 +1126,6 @@ section:hover {
   z-index: 999;
 }
 
-.control-buttons.hidden {
-  display: none;
-}
-
 /* Base styles for all control buttons */
 .filter-toggle-btn,
 .theme-toggle-btn,
@@ -1294,10 +1237,6 @@ footer {
   padding-top: 32px;
   border-top: 1px solid color-mix(in oklab, var(--fg), transparent 90%);
   font-size: 14px;
-}
-
-footer.hidden {
-  display: none;
 }
 
 /* ---------- Responsive Design ---------- */
